@@ -38,19 +38,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     padding: 20,
   },
-  nome: {
-    color: "blue",
-    fontSize: 35,
-    fontWeight: '700',
-  },
-  preco: {
-    fontSize: 30,
-    fontWeight: '700',
-  },
-  categoria: {
-    fontSize: 20,
-    fontWeight: '500',
-  },
 });
 
 export default styles;
