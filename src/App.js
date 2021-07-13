@@ -6,19 +6,14 @@ import Home from './screens/Home';
 import Cadastro from './screens/Cadastro/';
 import Routes from './routes/routes';
 
+import geral from './styles/geral';
+
 const App = () => {
   return (
-    <View style={styles.container}>
+    <View style={geral.container}>
       <Routes />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F7F8FA',
-  },
-});
 
 export default App;

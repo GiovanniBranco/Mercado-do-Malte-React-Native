@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignSelf: 'center',
-    height: '40%',
+    height: 300,
     width: '90%',
     marginTop: 30,
     borderRadius: 5,
@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
     borderRightColor: '#AFB2B1',
   },
   img: {
-    width: 200,
-    height: 200,
+    width: "100%",
+    height: "80%",
   },
   containerInfos: {
     flex: 2,

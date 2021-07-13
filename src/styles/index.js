@@ -1,5 +1,6 @@
-import colors from './colors';
-import fonts from './fonts';
-import general from './general';
+import cores from './cores';
+import fontes from './fontes';
+import metricas from './metricas';
+import geral from './geral';
 
-export { colors, fonts, general };
+export { cores, fontes, metricas, geral };
