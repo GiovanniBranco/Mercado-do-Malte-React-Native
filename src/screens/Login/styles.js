@@ -10,8 +10,14 @@ const styles = StyleSheet.create({
 
   containerIcone: {
     width: '100%',
-    backgroundColor: 'black',
+    marginTop: 10 ,
+    marginLeft: 10 ,
     justifyContent: 'flex-start',
+    alignSelf: 'flex-start',
+  },
+  icone: {
+    margin: 0,
+    padding: 0,
   },
   containerLogin: {
     justifyContent: 'center',
