@@ -35,6 +35,11 @@ const styles = StyleSheet.create({
   containerInputs: {
     marginTop: '3%',
   },
+  labelData: {
+    margin: 0,
+    fontSize: 14,
+    marginLeft: 18,
+  },
   containerInputDuplo: {
     marginTop: 10,
     marginBottom: 10,
@@ -65,7 +70,7 @@ const styles = StyleSheet.create({
   date: {
     justifyContent: 'center',
     alignSelf: 'center',
-    marginTop: 2,
+    marginTop: 0,
     height: 40,
     width: '80%',
     borderWidth: 1,

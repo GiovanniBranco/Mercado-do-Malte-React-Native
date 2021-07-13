@@ -148,18 +148,23 @@ const Cadastro = ({navigation}) => {
               style={styles.textInputCPF}
               keyboardType="numeric"
             />
-            <DatePicker
-              value={dataNascimento}
-              onDateChange={async date => {
-                console.log(date);
-                await setDataNascimento(date);
-              }}
-              text={handleText()}
-              isNullable={false}
-              androidDisplay="calendar"
-              style={styles.date}
-              textInputStyle={styles.textDate}
-            />
+            <View style={styles.containerData}>
+              <Text style={styles.labelData}>Data de nascimento*</Text>
+              <DatePicker
+                value={dataNascimento}
+                onDateChange={async date => {
+                  console.log(date);
+                  await setDataNascimento(date);
+                }}
+                text={handleText()}
+                isNullable={false}
+                androidDisplay="calendar"
+                style={styles.date}
+                textInputStyle={styles.textDate}
+                doneButtonLabel="Data de nascimento"
+                title="Data de nascimento"
+              />
+            </View>
           </View>
 
           <View style={styles.containerInputDuplo}>
@@ -234,8 +239,8 @@ const Cadastro = ({navigation}) => {
               color="green"
               style={styles.botaoVoltar}
               labelStyle={styles.labelCadastrar}
-            //   onPress={() => navigation.navigate('Home')}
-              >
+              //   onPress={() => navigation.navigate('Home')}
+            >
               Voltar
             </Button>
           </View>
