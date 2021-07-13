@@ -1,11 +1,14 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
+import Login from './screens/Login';
+
 const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Estou funcionando</Text>
-    </View>
+    // <View style={styles.container}>
+    //   <Text>Estou funcionando</Text>
+    // </View>
+    <Login />
   );
 };
 
