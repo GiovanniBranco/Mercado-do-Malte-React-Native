@@ -161,8 +161,6 @@ const Cadastro = ({navigation}) => {
                 androidDisplay="calendar"
                 style={styles.date}
                 textInputStyle={styles.textDate}
-                doneButtonLabel="Data de nascimento"
-                title="Data de nascimento"
               />
             </View>
           </View>

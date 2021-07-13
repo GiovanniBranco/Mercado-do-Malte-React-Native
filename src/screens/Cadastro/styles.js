@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     margin: 0,
     fontSize: 14,
     marginLeft: 18,
+    color: '#333',
   },
   containerInputDuplo: {
     marginTop: 10,
@@ -110,7 +111,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   botaoCadastrar: {
-    marginBottom: '5%',
+    marginBottom: '3%',
     padding: 3,
   },
   labelCadastrar: {
