@@ -7,9 +7,6 @@ const geral = {
     flex: 1,
     backgroundColor: cores.background,
   },
-  section: {
-    margin: metricas.doubleBaseMargin,
-  },
   titulo: {
     fontFamily: "Lexend-Regular",
     color: cores.gray800,

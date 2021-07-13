@@ -12,6 +12,7 @@ function Card(props) {
       <View style={styles.containerImage}>
         <Image
           style={styles.img}
+          resizeMode="cover"
           source={{
             uri: `https://ecommerce-serratec.herokuapp.com/produto/${props.nome}/imagem`,
           }}
@@ -22,13 +23,11 @@ function Card(props) {
           {formata.formataPalavra(props.nome)}
         </Text>
         <Text style={geral.numero}>
-          {formata.formataReal(props.preco)}
-          {console.warn(typeof(props.preco))}
+          {props.preco}
         </Text>
         <Text style={geral.subTitulo}>
           {formata.formataPalavra(props.categoria)}
         </Text>
-
       </View>
     </View>
   );

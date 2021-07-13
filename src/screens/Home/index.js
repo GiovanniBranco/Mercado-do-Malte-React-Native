@@ -10,17 +10,17 @@ function Home() {
   const [produtos, setProdutos] = useState([]);
   const [loading, setLoadiong] = useState(false);
 
-  useEffect(() => {
-    carregaProduto();
-    getProdutos();
-  }, []);
-
   const carregaProduto = async () => {
     setLoadiong(true);
     const data = await getProdutos();
     setProdutos(data);
     setLoadiong(false);
   };
+
+  useEffect(() => {
+    carregaProduto();
+    getProdutos();
+  }, []);
 
   return (
     <FlatList
