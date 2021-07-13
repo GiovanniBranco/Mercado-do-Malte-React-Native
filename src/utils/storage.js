@@ -21,6 +21,7 @@ const getToken = async () => {
 const salvarCliente = async value => {
   try {
     await AsyncStorage.setItem('@storage_Cliente', value);
+    console.log(getCliente());
   } catch (error) {
     console.log(error);
   }
