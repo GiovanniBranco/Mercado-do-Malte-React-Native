@@ -7,7 +7,6 @@ import storage from '../../utils/storage';
 import styles from './styles';
 import geral from '../../styles/geral';
 import cores from '../../styles/cores';
-import {useEffect} from 'react';
 
 const CustomDrawer = ({navigation}) => {
   const [token, setToken] = useState('');
@@ -26,7 +25,8 @@ const CustomDrawer = ({navigation}) => {
           mode={'text'}
           labelStyle={styles.labelBotao}
           color={cores.green400}
-          onPress={() => navigation.navigate('Login')}>
+          onPress={() => navigation.navigate('Login')}
+          icon="login">
           Login
         </Button>
       )}
@@ -35,7 +35,8 @@ const CustomDrawer = ({navigation}) => {
           mode={'text'}
           labelStyle={styles.labelBotao}
           color={cores.green400}
-          onPress={() => navigation.navigate('Cadastro')}>
+          onPress={() => navigation.navigate('Cadastro')}
+          icon="file-document-edit">
           Cadastro
         </Button>
       )}
