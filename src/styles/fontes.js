@@ -1,4 +1,4 @@
-const fonts = {
+const fontes = {
   extraLarge: 30,
   large: 20,
   input: 16,
@@ -8,4 +8,4 @@ const fonts = {
   tiny: 10,
 };
 
-export default fonts;
+export default fontes;

@@ -8,13 +8,19 @@ const geral = {
     backgroundColor: cores.background,
   },
   titulo: {
-    fontFamily: "Lexend-Regular",
+    fontFamily: "Lexend-Bold",
     color: cores.gray800,
     fontWeight: '600',
-    fontSize: fontes.extraLarge,
-    alignSelf: 'center',
+    fontSize: fontes.large,
     marginBottom: metricas.doubleBaseMargin,
-    letterSpacing: 2,
+    textAlign: 'center'
+  },
+  tituloVerde:{
+    fontFamily: "Lexend-ExtraBold",
+    color: cores.green400,
+    fontWeight: '500',
+    fontSize: fontes.large,
+    alignSelf: 'center',
   },
   subTitulo: {
     fontFamily: "Lexend-Regular",
@@ -23,12 +29,13 @@ const geral = {
     fontSize: fontes.large,
     alignSelf: 'center',
     marginBottom: metricas.doubleBaseMargin,
+    letterSpacing: 2
   },
   numero: {
-    fontFamily: "Lexend-Regular",
-    color: cores.gray800,
+    fontFamily: "Lexend-ExtraBold",
+    color: cores.greenlight,
     fontWeight: '700',
-    fontSize: fontes.large,
+    fontSize: fontes.extraLarge,
     
     alignSelf: 'center',
     marginBottom: metricas.doubleBaseMargin,
@@ -39,7 +46,12 @@ const geral = {
     fontSize: fontes.regular,
     alignSelf: 'center',
     marginBottom: metricas.doubleBaseMargin,
-  }
+  },btnText: {
+    color: cores.white,
+    fontSize: fontes.input,
+    fontFamily: "Inter-Bold",
+    alignSelf: 'center',
+  },
 };
 
 export default geral;
