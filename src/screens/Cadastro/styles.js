@@ -1,5 +1,7 @@
 import {StyleSheet} from 'react-native';
 
+import cores from '../../styles/cores';
+
 const styles = StyleSheet.create({
   container: {
     marginTop: 0,
@@ -30,7 +32,7 @@ const styles = StyleSheet.create({
   cadastro: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: 'green',
+    color: cores.green400,
   },
   containerInputs: {
     marginTop: '3%',

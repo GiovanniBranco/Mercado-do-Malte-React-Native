@@ -1,18 +1,19 @@
 import axios from 'axios';
-import utilStorage from '../utils/storage';
+import storage from '../utils/storage';
 
 const API = axios.create({
   baseURL: 'https://ecommerce-serratec.herokuapp.com/',
 });
 
-// API.interceptors.request.use(config => {
-//   let token = utilStorage.obterTokenNaStorage();
+function defineHeaderAuthorization() {
+  async function recuperarToken() {
+    const token = await storage.getToken();
 
-//   if (token) {
-//     config.headers.Authorization = token;
-//   }
+    API.defaults.headers.commom['Authorization'] = token;
+  }
+  recuperarToken();
+}
 
-//   return config;
-// });
+defineHeaderAuthorization();
 
 export default API;

@@ -1,5 +1,7 @@
 import {StyleSheet} from 'react-native';
 
+import cores from '../../styles/cores';
+
 const styles = StyleSheet.create({
   container: {
     width: '100%',
@@ -10,8 +12,8 @@ const styles = StyleSheet.create({
 
   containerIcone: {
     width: '100%',
-    marginTop: 10 ,
-    marginLeft: 10 ,
+    marginTop: 10,
+    marginLeft: 10,
     justifyContent: 'flex-start',
     alignSelf: 'flex-start',
   },
@@ -26,14 +28,14 @@ const styles = StyleSheet.create({
   login: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: 'green',
+    color: cores.green400,
   },
   containerLink: {
     alignSelf: 'flex-end',
   },
   link: {
     fontSize: 16,
-    color: 'lightgreen',
+    color: cores.greenlight,
   },
   containerBotoes: {
     alignSelf: 'center',

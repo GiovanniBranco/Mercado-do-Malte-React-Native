@@ -1,10 +1,11 @@
 import React, {useEffect} from 'react';
 import {useState} from 'react';
-import {FlatList, View} from 'react-native';
+import {FlatList, BackHandler, Alert} from 'react-native';
 
 import Card from '../../components/Card';
 
 import getProdutos from '../../repository/produtoRepository';
+import storage from '../../utils/storage';
 
 function Home() {
   const [produtos, setProdutos] = useState([]);
@@ -17,9 +18,33 @@ function Home() {
     setLoadiong(false);
   };
 
+  const fecharApp = () => {
+    Alert.alert('', 'Tem certeza que deseja sair?', [
+      {
+        text: 'Cancelar',
+        onPress: () => null,
+        style: 'cancel',
+      },
+      {
+        text: 'Sim',
+        onPress: () => {
+          storage.deleteToken();
+          BackHandler.exitApp();
+        },
+      },
+    ]);
+    return true;
+  };
+
+  const backHandler = BackHandler.addEventListener(
+    'hardwareBackPress',
+    fecharApp,
+  );
+
   useEffect(() => {
     carregaProduto();
     getProdutos();
+    return () => backHandler.remove();
   }, []);
 
   return (
