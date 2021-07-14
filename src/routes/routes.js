@@ -16,7 +16,6 @@ const Drawer = createDrawerNavigator();
 const Routes = () => {
   return (
     <NavigationContainer>
-      <Header />
       <Stack.Navigator initialRouteName="Home" headerMode>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Login" component={Login} />

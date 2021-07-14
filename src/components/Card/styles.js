@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     height: 300,
     width: '90%',
-    marginTop: 30,
+    marginTop: 15,
+    marginBottom: 15,
     borderRadius: 5,
     backgroundColor: '#fff',
 
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
   },
   img: {
     width: "100%",
-    height: "80%",
+    height: "75%",
   },
   containerInfos: {
     flex: 2,

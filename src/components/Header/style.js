@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
     height: metricas.navBarHeight,
     backgroundColor: cores.dark,
     alignItems: 'center',
+    
   },
   busca: {
     width: 100,

@@ -8,15 +8,15 @@ const geral = {
     backgroundColor: cores.background,
   },
   titulo: {
-    fontFamily: "Lexend-Regular",
+    fontFamily: "Lexend-Bold",
     color: cores.gray800,
     fontWeight: '600',
-    fontSize: fontes.extraLarge,
-    alignSelf: 'center',
+    fontSize: fontes.large,
     marginBottom: metricas.doubleBaseMargin,
+    textAlign: 'center'
   },
   tituloVerde:{
-    fontFamily: "Lexend-Bold",
+    fontFamily: "Lexend-ExtraBold",
     color: cores.green400,
     fontWeight: '500',
     fontSize: fontes.large,
@@ -29,12 +29,13 @@ const geral = {
     fontSize: fontes.large,
     alignSelf: 'center',
     marginBottom: metricas.doubleBaseMargin,
+    letterSpacing: 2
   },
   numero: {
-    fontFamily: "Lexend-Regular",
-    color: cores.gray800,
+    fontFamily: "Lexend-ExtraBold",
+    color: cores.greenlight,
     fontWeight: '700',
-    fontSize: fontes.large,
+    fontSize: fontes.extraLarge,
     
     alignSelf: 'center',
     marginBottom: metricas.doubleBaseMargin,

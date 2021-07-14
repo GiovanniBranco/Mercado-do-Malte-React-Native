@@ -6,12 +6,14 @@ import cores from '../../styles/cores';
 import geral from '../../styles/geral';
 import styles from "./style";
 
-const Header = ({navigation}) => {
+const Header = (props) => {
   return (
     <View style={styles.container}>
       <IconButton icon="menu" color={cores.green500} size={30} />
+      <TouchableOpacity onPress={() => props.navigation.navigate('Home')}>
       <Text style={geral.tituloVerde}>Mercado do Malte</Text>
-      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => props.navigation.navigate('Login')}>
         <Text style={styles.login}>Login</Text>
       </TouchableOpacity>
     </View>
