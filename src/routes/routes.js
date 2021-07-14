@@ -16,13 +16,13 @@ const Stack = createStackNavigator();
 const Routes = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home" headerMode>
+      {/* <Stack.Navigator initialRouteName="Home" headerMode>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Detalhes" component={Detalhes} />
 
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Cadastro" component={Cadastro} />
-      </Stack.Navigator>
+      </Stack.Navigator> */}
       <Drawer />
     </NavigationContainer>
   );
