@@ -14,7 +14,13 @@ const geral = {
     fontSize: fontes.extraLarge,
     alignSelf: 'center',
     marginBottom: metricas.doubleBaseMargin,
-    letterSpacing: 2,
+  },
+  tituloVerde:{
+    fontFamily: "Lexend-Bold",
+    color: cores.green400,
+    fontWeight: '500',
+    fontSize: fontes.large,
+    alignSelf: 'center',
   },
   subTitulo: {
     fontFamily: "Lexend-Regular",

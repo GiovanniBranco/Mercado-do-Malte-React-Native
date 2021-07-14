@@ -8,6 +8,7 @@ import Login from '../screens/Login/';
 import Cadastro from '../screens/Cadastro/';
 import Geladeira from '../screens/Geladeira';
 import Pagamento from '../screens/Pagamento';
+import Header from '../components/Header';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -15,7 +16,9 @@ const Drawer = createDrawerNavigator();
 const Routes = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login" headerMode>
+      <Header />
+      <Stack.Navigator initialRouteName="Home" headerMode>
+        <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Cadastro" component={Cadastro} />
       </Stack.Navigator>

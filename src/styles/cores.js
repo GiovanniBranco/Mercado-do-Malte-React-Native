@@ -1,7 +1,7 @@
-const colors = {
+const cores = {
   dark: '#0E0E0E',
   background: '#F7F8FA',
-  
+
   white: '#FFF',
 
   gray100: '#E6E8EB',
@@ -12,6 +12,6 @@ const colors = {
   greenlight: '#04D361',
   green400: '#049843',
   green500: '#009640',
-}
+};
 
-export default colors;
+export default cores;
