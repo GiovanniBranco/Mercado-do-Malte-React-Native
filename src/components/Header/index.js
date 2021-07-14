@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
-import {IconButton, Searchbar} from 'react-native-paper';
+import {IconButton} from 'react-native-paper';
 
 import cores from '../../styles/cores';
 import geral from '../../styles/geral';

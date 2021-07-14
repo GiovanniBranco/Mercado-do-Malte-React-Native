@@ -46,7 +46,12 @@ const geral = {
     fontSize: fontes.regular,
     alignSelf: 'center',
     marginBottom: metricas.doubleBaseMargin,
-  }
+  },btnText: {
+    color: cores.white,
+    fontSize: fontes.input,
+    fontFamily: "Inter-Bold",
+    alignSelf: 'center',
+  },
 };
 
 export default geral;
