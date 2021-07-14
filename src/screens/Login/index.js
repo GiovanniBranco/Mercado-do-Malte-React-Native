@@ -7,6 +7,7 @@ import storage from '../../utils/storage';
 import apiUsuario from '../../services/api-usuario';
 
 import styles from './styles';
+import cores from '../../styles/cores';
 
 const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
@@ -24,9 +25,9 @@ const Login = ({navigation}) => {
         console.log(resposta);
         const token = resposta.data.Authorization;
         storage.storeToken(token);
-        storage.getToken()
+        storage.getToken();
         salvarUsuario();
-        // navigation.navigate('Home');
+        navigation.navigate('Home');
       })
       .catch(erro => {
         alert('Não foi possível efetual o login');
@@ -49,7 +50,12 @@ const Login = ({navigation}) => {
   return (
     <>
       <View style={styles.containerIcone}>
-        <IconButton icon="menu" color="green" size={40} style={styles.icone} />
+        <IconButton
+          icon="menu"
+          color={cores.green400}
+          size={40}
+          style={styles.icone}
+        />
       </View>
       <View style={styles.container}>
         <View style={styles.containerLogin}>
@@ -61,7 +67,6 @@ const Login = ({navigation}) => {
             mode="outlined"
             label="Username"
             value={username}
-            selectionColor="green"
             onChangeText={user => setUsername(user)}
           />
           <TextInput
@@ -69,7 +74,6 @@ const Login = ({navigation}) => {
             secureTextEntry
             label="Senha"
             value={senha}
-            selectionColor="green"
             onChangeText={senha => setSenha(senha)}
           />
         </View>
@@ -84,13 +88,13 @@ const Login = ({navigation}) => {
           <Button
             mode="contained"
             onPress={() => efetuarLogin()}
-            color="green"
+            color={cores.green400}
             style={styles.botaoEntrar}>
             Entrar
           </Button>
           <Button
             mode="outlined"
-            color="green"
+            color={cores.green400}
             onPress={() => navigation.navigate('Cadastro')}>
             Cadastre se
           </Button>

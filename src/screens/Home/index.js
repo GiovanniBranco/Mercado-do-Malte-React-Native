@@ -1,11 +1,13 @@
-import React, {useEffect} from 'react';
-import {useState} from 'react';
-import {FlatList, ActivityIndicator} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {FlatList, BackHandler, Alert, ActivityIndicator} from 'react-native';
 
 import Header from '../../components/Header';
 import Card from '../../components/Card';
 
 import getProdutos from '../../repository/produtoRepository';
+
+import storage from '../../utils/storage';
+
 import cores from '../../styles/cores';
 
 function Home({navigation}) {
@@ -19,9 +21,33 @@ function Home({navigation}) {
     setLoading(false);
   };
 
+  const fecharApp = () => {
+    Alert.alert('', 'Tem certeza que deseja sair?', [
+      {
+        text: 'Cancelar',
+        onPress: () => null,
+        style: 'cancel',
+      },
+      {
+        text: 'Sim',
+        onPress: () => {
+          storage.deleteToken();
+          BackHandler.exitApp();
+        },
+      },
+    ]);
+    return true;
+  };
+
+  const backHandler = BackHandler.addEventListener(
+    'hardwareBackPress',
+    fecharApp,
+  );
+
   useEffect(() => {
     carregaProduto();
     getProdutos();
+    return () => backHandler.remove();
   }, []);
 
   const load = () =>{

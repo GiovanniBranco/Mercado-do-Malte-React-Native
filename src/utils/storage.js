@@ -10,12 +10,16 @@ const storeToken = async value => {
 const getToken = async () => {
   try {
     const value = await AsyncStorage.getItem('@storage_Token');
-    if (value !== null) {
+    if (value === null || value === undefined) {
+      console.log('O token ta zerado');
+      return null;
+    } else {
       console.log(value);
       return value;
     }
   } catch (error) {
     console.log(error);
+    return console.log('Fui no catch');
   }
 };
 const salvarCliente = async value => {
@@ -30,7 +34,7 @@ const getCliente = async () => {
   try {
     const value = await AsyncStorage.getItem('@storage_Cliente');
     if (value !== null) {
-      console.log(value);
+      console.log('O username é: ' + value);
       return value;
     }
   } catch (error) {
@@ -55,9 +59,11 @@ const getPedido = async () => {
     console.log(error);
   }
 };
+
 const deleteToken = async () => {
   try {
     await AsyncStorage.removeItem('@storage_Token');
+    console.log('Token deletado');
   } catch (error) {
     console.log(error.message);
   }

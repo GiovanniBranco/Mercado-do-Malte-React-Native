@@ -13,6 +13,7 @@ import api from '../../services/api';
 import apiViaCep from '../../services/viacep-api';
 
 import styles from './styles';
+import cores from '../../styles/cores';
 
 const Cadastro = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -95,7 +96,12 @@ const Cadastro = ({navigation}) => {
   return (
     <>
       <View style={styles.containerIcone}>
-        <IconButton icon="menu" color="green" size={40} style={styles.icone} />
+        <IconButton
+          icon="menu"
+          color={cores.green400}
+          size={40}
+          style={styles.icone}
+        />
       </View>
       <View style={styles.container}>
         <View style={styles.containerCadastro}>
@@ -225,7 +231,7 @@ const Cadastro = ({navigation}) => {
           <View style={styles.containerBotoes}>
             <Button
               mode="contained"
-              color="green"
+              color={cores.green400}
               style={styles.botaoCadastrar}
               labelStyle={styles.labelCadastrar}
               onPress={() => handleSubmit()}>
@@ -234,7 +240,7 @@ const Cadastro = ({navigation}) => {
 
             <Button
               mode="outlined"
-              color="green"
+              color={cores.green400}
               style={styles.botaoVoltar}
               labelStyle={styles.labelCadastrar}
               //   onPress={() => navigation.navigate('Home')}
