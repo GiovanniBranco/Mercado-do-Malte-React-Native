@@ -8,8 +8,11 @@ const API = axios.create({
 function defineHeaderAuthorization() {
   async function recuperarToken() {
     const token = await storage.getToken();
-
-    API.defaults.headers.commom['Authorization'] = token;
+    if (token != null) {
+      API.defaults.headers['Authorization'] = token;
+    } else {
+      return null;
+    }
   }
   recuperarToken();
 }

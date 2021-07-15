@@ -22,7 +22,6 @@ const Login = ({navigation}) => {
     await apiUsuario
       .logar(username, senha)
       .then(resposta => {
-        console.log(resposta);
         const token = resposta.data.Authorization;
         storage.storeToken(token);
         storage.getToken();
@@ -39,14 +38,6 @@ const Login = ({navigation}) => {
     storage.salvarCliente(username);
   };
 
-  useEffect(() => {
-    let token = storage.getToken();
-
-    //Irá para tela de home após o login
-    // if (token) {
-    //   navigation.navigate('Home');
-    // }
-  });
   return (
     <>
       <View style={styles.containerIcone}>

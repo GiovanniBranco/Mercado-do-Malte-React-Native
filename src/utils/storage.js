@@ -11,15 +11,36 @@ const getToken = async () => {
   try {
     const value = await AsyncStorage.getItem('@storage_Token');
     if (value === null || value === undefined) {
-      console.log('O token ta zerado');
       return null;
     } else {
-      console.log(value);
       return value;
     }
   } catch (error) {
     console.log(error);
     return console.log('Fui no catch');
+  }
+};
+
+const storeUserCompleto = async user => {
+  try {
+    const jsonValue = JSON.stringify(user);
+    await AsyncStorage.setItem('@storage_User', jsonValue);
+  } catch (error) {
+    console.log('Deu erro na hora de salvar o user' + error.message);
+  }
+};
+
+const getUserCompleto = async () => {
+  try {
+    const user = await AsyncStorage.getItem('@storage_User');
+    if (user === null || user === undefined) {
+      return null;
+    } else {
+      console.log(user);
+      return user;
+    }
+  } catch (error) {
+    console.log(error.message);
   }
 };
 const salvarCliente = async value => {
@@ -34,7 +55,6 @@ const getCliente = async () => {
   try {
     const value = await AsyncStorage.getItem('@storage_Cliente');
     if (value !== null) {
-      console.log('O username é: ' + value);
       return value;
     }
   } catch (error) {
@@ -63,7 +83,16 @@ const getPedido = async () => {
 const deleteToken = async () => {
   try {
     await AsyncStorage.removeItem('@storage_Token');
+    await deleteUserCompleto();
     console.log('Token deletado');
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+const deleteUserCompleto = async () => {
+  try {
+    await AsyncStorage.removeItem('@storage_User');
+    console.log('User deletado');
   } catch (error) {
     console.log(error.message);
   }
@@ -85,4 +114,6 @@ export default {
   getPedido,
   deleteToken,
   deletePedido,
+  getUserCompleto,
+  storeUserCompleto,
 };
