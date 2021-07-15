@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
+
 import {View, Text} from 'react-native';
 import {Button} from 'react-native-paper';
 
@@ -14,6 +15,7 @@ import cores from '../../styles/cores';
 
 const CustomDrawer = ({navigation}) => {
   const [username, setUserName] = useState('');
+
   const [produtos, setProdutos] = useState([]);
   const [tokenContext, setTokenContext] = useContext(TokenContext);
   
@@ -48,9 +50,9 @@ const CustomDrawer = ({navigation}) => {
         <>
           <View style={styles.containerUser}>
             <Text style={styles.username}>
-              {formata.formataPalavra(username.username)}
+              {formata.formataPalavra(username)}
             </Text>
-            <Text style={styles.email}>{username.email}</Text>
+            <Text style={styles.email}>giovannipbranco1@gmail.com</Text>
           </View>
           <View style={styles.divisor} />
         </>
