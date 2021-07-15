@@ -50,7 +50,8 @@ const geral = {
   texto: {
     fontFamily: 'Inter-Regular',
     color: cores.gray500,
-    fontSize: fontes.regular,
+    fontSize: fontes.input,
+    lineHeight: 18,
     width: '95%',
     textAlign: 'justify',
     marginBottom: metricas.doubleBaseMargin,
