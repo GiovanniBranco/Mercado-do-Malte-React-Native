@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 
 import CardDetalhes from '../../components/CardDetalhes';
@@ -8,15 +8,16 @@ import geral from '../../styles/geral';
 
 function Detalhes({route, navigation}) {
   const {nome, categoria, preco, descricao} = route.params;
- 
+
   return (
     <View style={geral.container}>
-      <Header navigation={navigation}/>
-      <CardDetalhes 
+      <Header navigation={navigation} />
+      <CardDetalhes
         nome={nome}
         categoria={categoria}
         preco={preco}
         descricao={descricao}
+        navigation={navigation}
       />
     </View>
   );

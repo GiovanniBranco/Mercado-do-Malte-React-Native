@@ -4,8 +4,7 @@ export default ProdutoModel = {
 
   properties: {
     nome: 'string',
-    descricao: 'string',
     preco: 'double',
-    categoria: 'string',
+    quantidade: 'int'
   },
 };

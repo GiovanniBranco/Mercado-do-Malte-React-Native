@@ -9,13 +9,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     padding: 20,
   },
-
   containerIcone: {
     width: '100%',
-    marginTop: 10,
-    marginLeft: 10,
-    justifyContent: 'flex-start',
-    alignSelf: 'flex-start',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
   },
   icone: {
     margin: 0,

@@ -7,8 +7,7 @@ import formata from '../../utils/formata';
 import styles from './styles';
 
 function Card(props) {
-
-  const { nome, categoria, preco, descricao} = props.produto
+  const {nome, categoria, preco, descricao} = props.produto;
 
   return (
     <View style={styles.container}>
@@ -23,15 +22,22 @@ function Card(props) {
       </View>
       <View style={styles.containerInfos}>
         <Text style={geral.titulo}>
-          {formata.formataPalavra(props.produto.nome)}
+          {formata.formataPalavra(nome)}
         </Text>
-        <Text style={geral.numero}>{props.produto.preco}</Text>
+        <Text style={geral.numero}>{formata.formataReal(preco)}</Text>
         <Text style={geral.subTitulo}>
-          {formata.formataPalavra(props.produto.categoria)}
+          {formata.formataPalavra(categoria)}
         </Text>
         <TouchableOpacity
           style={styles.btnDetalhes}
-          onPress={() => props.navigation.push('Detalhes', {nome, categoria, preco, descricao})}>
+          onPress={() =>
+            props.navigation.push('Detalhes', {
+              nome,
+              categoria,
+              preco,
+              descricao,
+            })
+          }>
           <Text style={geral.btnText}>Detalhes</Text>
         </TouchableOpacity>
       </View>

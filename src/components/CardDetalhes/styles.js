@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
   containerInfos: {
     height: '70%',
     alignItems: 'center',
-    padding: 20,
-    justifyContent: 'space-between',
+    padding: "2%",
+    justifyContent: 'space-evenly',
   },
   viewQuantidade: {
     alignSelf: 'center',

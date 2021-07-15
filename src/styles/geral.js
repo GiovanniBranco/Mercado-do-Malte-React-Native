@@ -8,48 +8,58 @@ const geral = {
     backgroundColor: cores.background,
   },
   titulo: {
-    fontFamily: "Lexend-Bold",
+    fontFamily: 'Lexend-Bold',
     color: cores.gray800,
     fontWeight: '600',
     fontSize: fontes.large,
     marginBottom: metricas.doubleBaseMargin,
-    textAlign: 'center'
+    textAlign: 'center',
   },
-  tituloVerde:{
-    fontFamily: "Lexend-ExtraBold",
+  tituloVerde: {
+    fontFamily: 'Lexend-ExtraBold',
     color: cores.green400,
     fontWeight: '500',
     fontSize: fontes.large,
     alignSelf: 'center',
   },
+  tituloVerdeXL: {
+    fontFamily: 'Lexend-ExtraBold',
+    color: cores.green400,
+    fontWeight: '500',
+    fontSize: fontes.extraLarge,
+    alignSelf: 'center',
+    letterSpacing: 2,
+  },
   subTitulo: {
-    fontFamily: "Lexend-Regular",
+    fontFamily: 'Lexend-Regular',
     color: cores.gray800,
     fontWeight: '600',
     fontSize: fontes.large,
     alignSelf: 'center',
     marginBottom: metricas.doubleBaseMargin,
-    letterSpacing: 2
+    letterSpacing: 2,
   },
   numero: {
-    fontFamily: "Lexend-ExtraBold",
-    color: cores.greenlight,
+    fontFamily: 'Lexend-ExtraBold',
+    color: cores.dark,
     fontWeight: '700',
     fontSize: fontes.extraLarge,
-    
     alignSelf: 'center',
     marginBottom: metricas.doubleBaseMargin,
   },
   texto: {
-    fontFamily: "Inter-Regular",
+    fontFamily: 'Inter-Regular',
     color: cores.gray500,
-    fontSize: fontes.regular,
-    alignSelf: 'center',
+    fontSize: fontes.input,
+    lineHeight: 18,
+    width: '95%',
+    textAlign: 'justify',
     marginBottom: metricas.doubleBaseMargin,
-  },btnText: {
+  },
+  btnText: {
     color: cores.white,
     fontSize: fontes.input,
-    fontFamily: "Inter-Bold",
+    fontFamily: 'Inter-Bold',
     alignSelf: 'center',
   },
 };
