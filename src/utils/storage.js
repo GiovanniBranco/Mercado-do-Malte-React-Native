@@ -21,28 +21,28 @@ const getToken = async () => {
   }
 };
 
-const storeUserCompleto = async user => {
-  try {
-    const jsonValue = JSON.stringify(user);
-    await AsyncStorage.setItem('@storage_User', jsonValue);
-  } catch (error) {
-    console.log('Deu erro na hora de salvar o user' + error.message);
-  }
-};
+// const storeUserCompleto = async user => {
+//   try {
+//     const jsonValue = JSON.stringify(user);
+//     await AsyncStorage.setItem('@storage_User', jsonValue);
+//   } catch (error) {
+//     console.log('Deu erro na hora de salvar o user' + error.message);
+//   }
+// };
 
-const getUserCompleto = async () => {
-  try {
-    const user = await AsyncStorage.getItem('@storage_User');
-    if (user === null || user === undefined) {
-      return null;
-    } else {
-      console.log(user);
-      return user;
-    }
-  } catch (error) {
-    console.log(error.message);
-  }
-};
+// const getUserCompleto = async () => {
+//   try {
+//     const user = await AsyncStorage.getItem('@storage_User');
+//     if (user === null || user === undefined) {
+//       return null;
+//     } else {
+//       console.log(user);
+//       return user;
+//     }
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// };
 const salvarCliente = async value => {
   try {
     await AsyncStorage.setItem('@storage_Cliente', value);
@@ -89,14 +89,14 @@ const deleteToken = async () => {
     console.log(error.message);
   }
 };
-const deleteUserCompleto = async () => {
-  try {
-    await AsyncStorage.removeItem('@storage_User');
-    console.log('User deletado');
-  } catch (error) {
-    console.log(error.message);
-  }
-};
+// const deleteUserCompleto = async () => {
+//   try {
+//     await AsyncStorage.removeItem('@storage_User');
+//     console.log('User deletado');
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// };
 const deletePedido = async () => {
   try {
     await AsyncStorage.removeItem('@storage_Pedido');
@@ -114,6 +114,4 @@ export default {
   getPedido,
   deleteToken,
   deletePedido,
-  getUserCompleto,
-  storeUserCompleto,
 };

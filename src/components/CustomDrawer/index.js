@@ -7,6 +7,8 @@ import obterUser from '../../repository/clienteRepository';
 import storage from '../../utils/storage';
 import formata from '../../utils/formata';
 
+import getProdutos from '../../repository/produtoRepository';
+
 import styles from './styles';
 import geral from '../../styles/geral';
 import cores from '../../styles/cores';
@@ -14,23 +16,36 @@ import cores from '../../styles/cores';
 const CustomDrawer = ({navigation}) => {
   const [token, setToken] = useState('');
   const [username, setUserName] = useState('');
+  const [produtos, setProdutos] = useState([]);
+  const [filtroProdutos, setFiltroProdutos] = useState([]);
 
   const isLogado = async () => {
     let token = await storage.getToken();
     setToken(token);
-    await getUser();
+    // await getUser();
   };
 
-  const getUser = async () => {
-    const username = await storage.getCliente();
-    const user = await obterUser(username);
-    if (user != null) {
-      setUserName(user);
-    } else {
-      setUserName(null);
-    }
-  };
+  // const getUser = async () => {
+  //   const username = await storage.getCliente();
+  //   const user = await obterUser(username);
+  //   if (user != null) {
+  //     setUserName(user);
+  //   } else {
+  //     setUserName(null);
+  //   }
+  // };
   isLogado();
+
+  useEffect(async () => {
+    let pVindodaAPI = await getProdutos();
+    setProdutos(pVindodaAPI);
+  }, []);
+
+  const categoriaFiltrar = categoria => {
+    const filtro = produtos.filter(p => p.categoria === categoria);
+
+    navigation.navigate('Home', filtro);
+  };
 
   return (
     <View style={(geral.container, styles.container)}>
@@ -95,7 +110,7 @@ const CustomDrawer = ({navigation}) => {
         mode={'text'}
         labelStyle={styles.labelBotao}
         color={cores.green400}
-        // onPress={() => navigation.navigate('Home')}
+        onPress={() => categoriaFiltrar('artesanais')}
         icon="fridge-bottom">
         Artesanais
       </Button>
