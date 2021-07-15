@@ -1,4 +1,3 @@
-import React, {useEffect} from 'react';
 import axios from 'axios';
 import storage from '../utils/storage';
 
@@ -19,6 +18,5 @@ function defineHeaderAuthorization() {
 }
 
 defineHeaderAuthorization();
-
 
 export default API;

@@ -10,10 +10,10 @@ import storage from '../../utils/storage';
 
 import cores from '../../styles/cores';
 
-function Home({navigation, props}) {
+function Home({navigation, route}) {
   const [produtos, setProdutos] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  console.log(route.params)
   const carregaProduto = async () => {
     setLoading(true);
     const data = await getProdutos();

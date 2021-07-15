@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useContext} from 'react';
 import {View, Text} from 'react-native';
 import {TextInput, Button, IconButton} from 'react-native-paper';
 
 import storage from '../../utils/storage';
 
 import apiUsuario from '../../services/api-usuario';
+import TokenContext from '../../context/TokenContext';
 
 import styles from './styles';
 import cores from '../../styles/cores';
@@ -12,6 +13,7 @@ import cores from '../../styles/cores';
 const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [senha, setSenha] = useState('');
+  const [tokenContext, setTokenContext] = useContext(TokenContext);
 
   const efetuarLogin = async () => {
     if (!username || !senha) {
@@ -23,9 +25,8 @@ const Login = ({navigation}) => {
       .logar(username, senha)
       .then(resposta => {
         const token = resposta.data.Authorization;
-        storage.storeToken(token);
-        storage.getToken();
         salvarUsuario();
+        setTokenContext(token);
         navigation.navigate('Home');
       })
       .catch(erro => {
