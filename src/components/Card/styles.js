@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
     borderRightColor: '#AFB2B1',
   },
   img: {
-    width: '100%',
-    minHeight: '50%'
+    width: '120%',
+    height: '100%'
   },
   containerInfos: {
     width: '65%',
