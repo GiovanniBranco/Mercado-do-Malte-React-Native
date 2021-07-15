@@ -4,6 +4,7 @@ import {Text, FlatList, View, TouchableOpacity} from 'react-native';
 import CardGeladeira from '../../components/CardGeladeira';
 import Header from '../../components/Header';
 
+import formata from '../../utils/formata';
 import realmRepository from '../../repository/realmRepository';
 
 import styles from './styles';
@@ -15,6 +16,7 @@ function Geladeira({navigation}) {
   useEffect(async () => {
     const produtosRealm = await realmRepository.getProdutoRealm();
     setProdutos(produtosRealm);
+    somarQuantidade();
   }, []);
 
   const somarQuantidade = async () => {
@@ -28,7 +30,7 @@ function Geladeira({navigation}) {
 
   return (
     <>
-      <Header navigation={navigation}/>
+      <Header navigation={navigation} />
       <View style={styles.container}>
         <View style={styles.viewTitle}>
           <Text style={styles.texto}>Minha Geladeira</Text>
@@ -47,7 +49,7 @@ function Geladeira({navigation}) {
         <View style={styles.viewFooter}>
           <View style={styles.viewFooterEsquerdo}>
             <Text style={styles.textoSuperiorFooter}>
-              Total pedido R${valor}
+              Total pedido {formata.formataReal(valor)}
             </Text>
             <Text style={styles.textoInferiorFooter}>
               Entrega em 7 dias úteis

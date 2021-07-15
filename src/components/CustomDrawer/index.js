@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
+
 import {View, Text} from 'react-native';
 import {Button} from 'react-native-paper';
 
-import obterUser from '../../repository/clienteRepository';
+import TokenContext from '../../context/TokenContext';
 
-import storage from '../../utils/storage';
 import formata from '../../utils/formata';
 
 import getProdutos from '../../repository/produtoRepository';
@@ -14,36 +14,18 @@ import geral from '../../styles/geral';
 import cores from '../../styles/cores';
 
 const CustomDrawer = ({navigation}) => {
-  const [token, setToken] = useState('');
   const [username, setUserName] = useState('');
 
-  const isLogado = async () => {
-    let token = await storage.getToken();
-    setToken(token);
-    setUsuario();
-  };
-
-  const setUsuario = async () => {
-    const username = await storage.getCliente();
-    setUserName(username);
-  };
-
-  isLogado();
-
+  const [produtos, setProdutos] = useState([]);
+  const [tokenContext, setTokenContext] = useContext(TokenContext);
+  
   useEffect(async () => {
-    let pVindodaAPI = await getProdutos();
-    setProdutos(pVindodaAPI);
+    setProdutos(await getProdutos());
   }, []);
-
-  const categoriaFiltrar = categoria => {
-    const filtro = produtos.filter(p => p.categoria === categoria);
-
-    navigation.navigate('Home', filtro);
-  };
 
   return (
     <View style={(geral.container, styles.container)}>
-      {token != null ? null : (
+      {tokenContext != null ? null : (
         <Button
           mode={'text'}
           labelStyle={styles.labelBotao}
@@ -53,7 +35,7 @@ const CustomDrawer = ({navigation}) => {
           Login
         </Button>
       )}
-      {token != null ? null : (
+      {tokenContext != null ? null : (
         <Button
           mode={'text'}
           labelStyle={styles.labelBotao}
@@ -64,7 +46,7 @@ const CustomDrawer = ({navigation}) => {
         </Button>
       )}
 
-      {token === null ? null : (
+      {tokenContext === null ? null : (
         <>
           <View style={styles.containerUser}>
             <Text style={styles.username}>
@@ -76,7 +58,7 @@ const CustomDrawer = ({navigation}) => {
         </>
       )}
 
-      {token != null ? (
+      {tokenContext != null ? (
         <View style={styles.containerBotao}>
           <Button
             mode={'text'}
@@ -104,7 +86,7 @@ const CustomDrawer = ({navigation}) => {
         mode={'text'}
         labelStyle={styles.labelBotao}
         color={cores.green400}
-        onPress={() => categoriaFiltrar('artesanais')}
+        onPress={() => navigation.navigate('HomeArtesanais')}
         icon="fridge-bottom">
         Artesanais
       </Button>
@@ -114,7 +96,7 @@ const CustomDrawer = ({navigation}) => {
         mode={'text'}
         color={cores.green400}
         icon="glass-mug-variant"
-        // onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.navigate('HomeNacionais')}
       >
         Nacionais
       </Button>
@@ -122,18 +104,18 @@ const CustomDrawer = ({navigation}) => {
         labelStyle={styles.labelBotao}
         mode={'text'}
         color={cores.green400}
-        // onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.navigate('HomeImportadas')}
         icon="airplane">
         Importadas
       </Button>
 
-      {token != null ? (
+      {tokenContext != null ? (
         <Button
           labelStyle={styles.labelBotao}
           mode={'text'}
           color={cores.green400}
           onPress={() => {
-            storage.deleteToken();
+            setTokenContext(null);
             navigation.navigate('Home');
           }}
           icon="door-open">

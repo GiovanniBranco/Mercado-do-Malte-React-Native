@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {View, Text, Image, TouchableOpacity, TextInput} from 'react-native';
 
+import TokenContext from '../../context/TokenContext';
 import realmRepository from '../../repository/realmRepository';
-import storage from '../../utils/storage';
 
 import formata from '../../utils/formata';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -10,7 +10,7 @@ import geral from '../../styles/geral';
 import styles from './styles';
 
 function CardDetalhes(props) {
-  const [token, setToken] = useState('');
+  const token = useContext(TokenContext);
   const [quantidade, setQuantidade] = useState(1);
   const {nome, descricao, categoria, preco} = props;
 
@@ -19,16 +19,6 @@ function CardDetalhes(props) {
     preco: preco,
     quantidade: quantidade,
   };
-
-  const isLogado = async () => {
-    let token = await storage.getToken();
-    setToken(token);
-
-  };
-
-  useEffect(() => {
-    isLogado();
-  }, []);
 
   const numeroString = String(quantidade);
   const atualiza = qtd => {
