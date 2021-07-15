@@ -14,6 +14,7 @@ const StackRoute = () => {
   return (
     <Stack.Navigator initialRouteName="Home" headerMode>
       <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Geladeira" component={Geladeira} />
       <Stack.Screen name="Detalhes" component={Detalhes} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Cadastro" component={Cadastro} />
