@@ -10,16 +10,14 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   labelBotao: {
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 18,
+    fontFamily: "Lexend-Regular",
+    letterSpacing: 2,
+    fontWeight: '700',
   },
   containerBotao: {
     flexDirection: 'row',
-  },
-  icone: {
-    marginRight: 0,
-    paddingRight: 0,
-  },
+  }
 });
 
 export default styles;

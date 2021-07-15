@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
 import {TextInput, Button, IconButton} from 'react-native-paper';
 
 import {DatePicker} from 'react-native-woodpicker';
@@ -14,6 +14,7 @@ import apiViaCep from '../../services/viacep-api';
 
 import styles from './styles';
 import cores from '../../styles/cores';
+import geral from '../../styles/geral';
 
 const Cadastro = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -94,18 +95,26 @@ const Cadastro = ({navigation}) => {
   };
 
   return (
-    <>
+    <ScrollView>
       <View style={styles.containerIcone}>
         <IconButton
           icon="menu"
           color={cores.green400}
           size={40}
           style={styles.icone}
+          onPress={() => navigation.openDrawer()}
+        />
+        <IconButton
+          icon="arrow-left-bold"
+          color={cores.green400}
+          size={40}
+          style={styles.icone}
+          onPress={() => navigation.goBack()}
         />
       </View>
       <View style={styles.container}>
         <View style={styles.containerCadastro}>
-          <Text style={styles.cadastro}>Cadastro</Text>
+          <Text style={geral.tituloVerdeXL}>Cadastro</Text>
         </View>
 
         <View style={styles.containerInputs}>
@@ -250,7 +259,7 @@ const Cadastro = ({navigation}) => {
           </View>
         </View>
       </View>
-    </>
+    </ScrollView>
   );
 };
 

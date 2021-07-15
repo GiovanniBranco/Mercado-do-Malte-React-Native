@@ -55,6 +55,14 @@ const Login = ({navigation}) => {
           color={cores.green400}
           size={40}
           style={styles.icone}
+          onPress={() => navigation.openDrawer()}
+        />
+        <IconButton
+          icon="arrow-left-bold"
+          color={cores.green400}
+          size={40}
+          style={styles.icone}
+          onPress={() => navigation.goBack()}
         />
       </View>
       <View style={styles.container}>

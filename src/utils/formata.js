@@ -1,8 +1,5 @@
-function formataReal(valor) {
-  return Number(valor).toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  });
+function formataReal(num) {
+  return 'R$ ' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, 'R$1,')
 }
 
 function formataPalavra(texto) {

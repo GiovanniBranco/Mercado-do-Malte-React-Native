@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import {View, Text, Image, TouchableOpacity, TextInput} from 'react-native';
 
+import formata from '../../utils/formata';
 import Icon from 'react-native-vector-icons/AntDesign';
-
 import geral from '../../styles/geral';
-
 import styles from './styles';
 
 function CardDetalhes(props) {
+  const {nome, descricao, categoria, preco} = props;
+
   const [quantidade, setQuantidade] = useState(1);
   const numeroString = String(quantidade);
   const atualiza = qtd => {
@@ -25,15 +26,17 @@ function CardDetalhes(props) {
             style={styles.img}
             resizeMode="contain"
             source={{
-              uri: `https://ecommerce-serratec.herokuapp.com/produto/${props.nome}/imagem`,
+              uri: `https://ecommerce-serratec.herokuapp.com/produto/${nome}/imagem`,
             }}
           />
         </View>
         <View style={styles.containerInfos}>
-          <Text style={geral.titulo}>{props.nome}</Text>
-          <Text style={geral.texto}>{props.descricao}</Text>
-          <Text style={geral.subTitulo}>{props.categoria}</Text>
-          <Text style={geral.numero}>{props.preco}</Text>
+          <Text style={geral.titulo}>{formata.formataPalavra(nome)}</Text>
+          <Text style={geral.texto}>{descricao}</Text>
+          <Text style={geral.subTitulo}>
+            {formata.formataPalavra(categoria)}
+          </Text>
+          <Text style={geral.numero}>{formata.formataReal(preco)}</Text>
         </View>
       </View>
       <View style={styles.viewQuantidade}>
