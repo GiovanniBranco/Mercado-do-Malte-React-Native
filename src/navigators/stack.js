@@ -24,6 +24,7 @@ const StackRoute = () => {
       <Stack.Screen name="Detalhes" component={Detalhes} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Cadastro" component={Cadastro} />
+      <Stack.Screen name="Pagamento" component={Pagamento} />
     </Stack.Navigator>
   );
 };

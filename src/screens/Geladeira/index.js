@@ -59,7 +59,7 @@ function Geladeira({navigation}) {
             <TouchableOpacity
               style={styles.btnInferiorFooter}
               onPress={() => {
-                alert();
+                navigation.navigate('Pagamento');
               }}>
               <Text style={styles.textoInferiorFooter}>Pagar Pedidos</Text>
             </TouchableOpacity>

@@ -42,7 +42,7 @@ const Pagamento = ({navigation}) => {
 
   return (
     <>
-      <Header />
+      <Header navigation={navigation} />
 
       <View style={styles.container}>
         <View style={styles.containerTitulo}>
