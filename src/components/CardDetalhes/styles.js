@@ -4,7 +4,7 @@ import cores from '../../styles/cores';
 const styles = StyleSheet.create({
   card: {
     alignSelf: 'center',
-    height: '70%',
+    height: '65%',
     width: '90%',
     padding: 5,
     marginTop: '5%',
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   inputQuantidade: {
-    borderColor: cores.gray800,
+    borderColor: cores.gray200,
     borderRadius: 3,
     borderWidth: 1,
     height: 40,
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '90%',
-    marginTop: '5%',
+    marginTop: '4%',
   },
   botao: {
     backgroundColor: cores.green400,

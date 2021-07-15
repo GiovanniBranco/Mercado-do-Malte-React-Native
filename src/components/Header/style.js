@@ -22,6 +22,10 @@ const styles = StyleSheet.create({
     fontFamily: "Lexend-Bold",
     marginRight: metricas.doubleBaseMargin
   },
+  geladeira: {
+    color: cores.green400,
+    marginRight: metricas.doubleBaseMargin
+  }
 });
 
 export default styles;

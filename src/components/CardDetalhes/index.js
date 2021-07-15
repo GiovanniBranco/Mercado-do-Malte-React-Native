@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, Image, TouchableOpacity, TextInput} from 'react-native';
 
 import realmRepository from '../../repository/realmRepository';
+import storage from '../../utils/storage';
 
 import formata from '../../utils/formata';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -9,6 +10,7 @@ import geral from '../../styles/geral';
 import styles from './styles';
 
 function CardDetalhes(props) {
+  const [token, setToken] = useState('');
   const [quantidade, setQuantidade] = useState(1);
   const {nome, descricao, categoria, preco} = props;
 
@@ -17,6 +19,16 @@ function CardDetalhes(props) {
     preco: preco,
     quantidade: quantidade,
   };
+
+  const isLogado = async () => {
+    let token = await storage.getToken();
+    setToken(token);
+    await getUser();
+  };
+
+  useEffect(() => {
+    isLogado();
+  }, []);
 
   const numeroString = String(quantidade);
   const atualiza = qtd => {
@@ -73,16 +85,30 @@ function CardDetalhes(props) {
       <View style={styles.viewBotao}>
         <TouchableOpacity
           onPress={() => {
+            if (!token) {
+              alert(
+                'Você precisa estar logado para adicionar produtos ao carrinho!',
+              );
+              realmRepository.saveProduto(Produto);
+              props.navigation.navigate('Login');
+              return;
+            }
             realmRepository.saveProduto(Produto);
-            props.navigation.navigate("Home");
+            props.navigation.navigate('Home');
           }}
           style={styles.botao}>
           <Text style={geral.btnText}>Adicionar a geladeira</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
+            if (!token) {
+              alert('Você precisa estar logado para comprar agora!');
+              realmRepository.saveProduto(Produto);
+              props.navigation.navigate('Login');
+              return;
+            }
             realmRepository.saveProduto(Produto);
-            props.navigation.navigate("Geladeira");
+            props.navigation.navigate('Geladeira');
           }}
           style={styles.botao}>
           <Text style={geral.btnText}>Comprar agora</Text>
