@@ -10,7 +10,7 @@ import storage from '../../utils/storage';
 
 import cores from '../../styles/cores';
 
-function Home({navigation}) {
+function Home({navigation, props}) {
   const [produtos, setProdutos] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -43,8 +43,6 @@ function Home({navigation}) {
     'hardwareBackPress',
     fecharApp,
   );
-
-  
 
   useEffect(() => {
     carregaProduto();
