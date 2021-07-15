@@ -10,7 +10,7 @@ import getProdutos from '../../repository/produtoRepository';
 import cores from '../../styles/cores';
 import styles from '../../components/Header/style';
 
-function Home({navigation}) {
+function HomeNacionais({navigation}) {
   const [produtos, setProdutos] = useState([]);
   const [produtosFiltrados, setProdutosFiltrados] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -31,8 +31,8 @@ function Home({navigation}) {
   const carregaProduto = async () => {
     setLoading(true);
     const data = await getProdutos();
-    setProdutos(data);
-    setProdutosFiltrados(data);
+    setProdutos(data.filter(p => p.categoria === 'nacionais'));
+    setProdutosFiltrados(data.filter(p => p.categoria === 'nacionais'));
     setLoading(false);
   };
 
@@ -61,6 +61,7 @@ function Home({navigation}) {
   useEffect(() => {
     carregaProduto();
     getProdutos();
+    
     return () => backHandler.remove();
   }, []);
 
@@ -83,10 +84,9 @@ function Home({navigation}) {
         ListFooterComponent={loading ? load : null}
         renderItem={({item}) => (
           <Card navigation={navigation} produto={item} />
-        )}>
-      </FlatList>
+        )}></FlatList>
     </>
   );
 }
 
-export default Home;
+export default HomeNacionais;

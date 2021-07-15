@@ -15,17 +15,11 @@ import cores from '../../styles/cores';
 const CustomDrawer = ({navigation}) => {
   const [username, setUserName] = useState('');
   const [produtos, setProdutos] = useState([]);
-  const [filtroProdutos, setFiltroProdutos] = useState([]);
   const [tokenContext, setTokenContext] = useContext(TokenContext);
   
   useEffect(async () => {
     setProdutos(await getProdutos());
   }, []);
-
-  const categoriaFiltrar = categoria => {
-    const filtro = produtos.filter(p => p.categoria === categoria);
-    navigation.push('Home', {categoria});
-  };
 
   return (
     <View style={(geral.container, styles.container)}>
@@ -90,7 +84,7 @@ const CustomDrawer = ({navigation}) => {
         mode={'text'}
         labelStyle={styles.labelBotao}
         color={cores.green400}
-        onPress={() => categoriaFiltrar('artesanais')}
+        onPress={() => navigation.navigate('HomeArtesanais')}
         icon="fridge-bottom">
         Artesanais
       </Button>
@@ -100,7 +94,7 @@ const CustomDrawer = ({navigation}) => {
         mode={'text'}
         color={cores.green400}
         icon="glass-mug-variant"
-        // onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.navigate('HomeNacionais')}
       >
         Nacionais
       </Button>
@@ -108,7 +102,7 @@ const CustomDrawer = ({navigation}) => {
         labelStyle={styles.labelBotao}
         mode={'text'}
         color={cores.green400}
-        // onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.navigate('HomeImportadas')}
         icon="airplane">
         Importadas
       </Button>
@@ -119,7 +113,7 @@ const CustomDrawer = ({navigation}) => {
           mode={'text'}
           color={cores.green400}
           onPress={() => {
-            setTokenContext('');
+            setTokenContext(null);
             navigation.navigate('Home');
           }}
           icon="door-open">

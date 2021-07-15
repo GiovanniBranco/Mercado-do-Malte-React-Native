@@ -6,7 +6,7 @@ import Drawer from '../navigators/drawer';
 
 const Routes = () => {
   const token = useState('');
-  
+
   return (
     <NavigationContainer>
       <TokenContext.Provider value={token}>
