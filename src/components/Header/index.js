@@ -15,13 +15,12 @@ const Header = props => {
   const isLogado = async () => {
     let token = await storage.getToken();
     setToken(token);
-    await getUser();
   };
-  
+
   useEffect(() => {
     isLogado();
-  },[])
-  
+  }, []);
+
   return !token ? (
     <View style={styles.container}>
       <IconButton

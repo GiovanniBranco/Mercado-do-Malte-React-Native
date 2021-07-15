@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
 import {Button} from 'react-native-paper';
 
@@ -16,24 +16,18 @@ import cores from '../../styles/cores';
 const CustomDrawer = ({navigation}) => {
   const [token, setToken] = useState('');
   const [username, setUserName] = useState('');
-  const [produtos, setProdutos] = useState([]);
-  const [filtroProdutos, setFiltroProdutos] = useState([]);
 
   const isLogado = async () => {
     let token = await storage.getToken();
     setToken(token);
-    // await getUser();
+    setUsuario();
   };
 
-  // const getUser = async () => {
-  //   const username = await storage.getCliente();
-  //   const user = await obterUser(username);
-  //   if (user != null) {
-  //     setUserName(user);
-  //   } else {
-  //     setUserName(null);
-  //   }
-  // };
+  const setUsuario = async () => {
+    const username = await storage.getCliente();
+    setUserName(username);
+  };
+
   isLogado();
 
   useEffect(async () => {
@@ -74,9 +68,9 @@ const CustomDrawer = ({navigation}) => {
         <>
           <View style={styles.containerUser}>
             <Text style={styles.username}>
-              {formata.formataPalavra(username.username)}
+              {formata.formataPalavra(username)}
             </Text>
-            <Text style={styles.email}>{username.email}</Text>
+            <Text style={styles.email}>giovannipbranco1@gmail.com</Text>
           </View>
           <View style={styles.divisor} />
         </>

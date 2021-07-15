@@ -23,7 +23,7 @@ function CardDetalhes(props) {
   const isLogado = async () => {
     let token = await storage.getToken();
     setToken(token);
-    await getUser();
+
   };
 
   useEffect(() => {

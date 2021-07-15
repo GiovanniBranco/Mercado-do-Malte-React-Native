@@ -1,38 +1,44 @@
 import React, {useState} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet, Alert} from 'react-native';
 import {TextInput, Button, IconButton} from 'react-native-paper';
+
+import SelectDropdown from 'react-native-select-dropdown';
 
 import Header from '../../components/Header';
 import geral from '../../styles/geral';
 import cores from '../../styles/cores';
 import styles from './styles';
-// import {Dropdown} from 'react-native-element-dropdown';
-// import DropDownPicker from 'react-native-dropdown-picker';
 
-const Pagamento = () => {
-  const data = [
-    {label: '01', value: '1'},
-    {label: '02', value: '2'},
-    {label: '03', value: '3'},
-    {label: '04', value: '4'},
-    {label: '05', value: '5'},
-    {label: '06', value: '6'},
-    {label: '07', value: '7'},
-    {label: '08', value: '8'},
-    {label: '09', value: '9'},
-    {label: '10', value: '10'},
-    {label: '11', value: '11'},
-    {label: '12', value: '12'},
+const Pagamento = ({navigation}) => {
+  const meses = [
+    '01',
+    '02',
+    '03',
+    '04',
+    '05',
+    '06',
+    '07',
+    '08',
+    '09',
+    '10',
+    '11',
+    '12',
   ];
-  const [dropdown, setDropdown] = useState(null);
-
-  const _renderItem = item => {
-    return (
-      <View style={styles.item}>
-        <Text style={styles.textItem}>{item.label}</Text>
-      </View>
-    );
-  };
+  const anos = [
+    '21',
+    '22',
+    '23',
+    '24',
+    '25',
+    '26',
+    '27',
+    '28',
+    '29',
+    '30',
+    '31',
+    '32',
+  ];
+  const parcelas = ['1x de R$ 15', '2x de R$ 7,50'];
 
   return (
     <>
@@ -66,22 +72,28 @@ const Pagamento = () => {
               label="Numero do cartao*"
               style={styles.inputCartao}
             />
-            {/* <DropDownPicker
-                        items={[
-                            {label: 'Item 1', value: 'item1'},
-                            {label: 'Item 2', value: 'item2'},
-                        ]}
-                        defaultIndex={0}
-                        containerStyle={{height: 40}}
-                        onChangeItem={item => console.log(item.label, item.value)}
-                        /> */}
-            <TextInput
-              mode="outlined"
-              label="Validade*"
-              style={styles.inputValidade}
-            />
+            <View style={styles.containerValidade}>
+              <View>
+                <Text>Validade*</Text>
+                <View style={styles.containerValidade}>
+                  <SelectDropdown
+                    data={meses}
+                    defaultValue="01"
+                    onSelect={(selectedItem, index) => {}}
+                    buttonStyle={styles.inputMes}
+                    buttonTextStyle={styles.labelValidade}
+                  />
+                  <SelectDropdown
+                    data={anos}
+                    defaultValue="21"
+                    onSelect={(selectedItem, index) => {}}
+                    buttonStyle={styles.inputAno}
+                    buttonTextStyle={styles.labelValidade}
+                  />
+                </View>
+              </View>
+            </View>
           </View>
-
           <View style={styles.containerCvv}>
             <TextInput mode="outlined" label="CVV*" style={styles.inputCvv} />
             <IconButton
@@ -91,36 +103,41 @@ const Pagamento = () => {
               style={styles.iconeCvv}
             />
           </View>
-
           <View style={styles.containerParcelas}>
-            <TextInput
-              mode="outlined"
-              label="Numero de Parcelas"
-              placeholder="1x de R$ 15,00"
-              style={styles.inputParcelas}
+            <View>
+              <Text>Número de parcelas*</Text>
+            </View>
+            <SelectDropdown
+              data={parcelas}
+              defaultValueByIndex={0}
+              onSelect={(selectedItem, index) => {}}
+              buttonStyle={styles.inputParcelas}
+              buttonTextStyle={styles.labelValidade}
             />
           </View>
 
           <View style={styles.divisor} />
-
           <View style={styles.containerTotal}>
             <Text style={styles.total}>Total</Text>
             <Text style={styles.valor}>R$ 15,00</Text>
           </View>
-
           <View style={styles.containerBotoes}>
             <Button
               style={styles.fechar}
               labelStyle={geral.btnText}
               mode="contained"
-              color={cores.green500}>
+              color={cores.green500}
+              onPress={() =>
+                Alert.alert('Nosso agradecimento!', 'Grupo 01, só BRABO!')
+              }>
               Fechar Pedido
             </Button>
             <Button
               style={styles.voltar}
               labelStyle={styles.label}
               mode="outlined"
-              color={cores.green500}>
+              color={cores.green500}
+              onPress={() => navigation.goBack()}>
               Voltar
             </Button>
           </View>
