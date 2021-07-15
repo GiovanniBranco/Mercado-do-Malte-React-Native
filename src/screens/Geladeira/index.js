@@ -8,7 +8,7 @@ import realmRepository from '../../repository/realmRepository';
 
 import styles from './styles';
 
-function Geladeira() {
+function Geladeira({navigation}) {
   const [produtos, setProdutos] = useState([]);
   const [valor, setValor] = useState(0);
 
@@ -28,7 +28,7 @@ function Geladeira() {
 
   return (
     <>
-      <Header />
+      <Header navigation={navigation}/>
       <View style={styles.container}>
         <View style={styles.viewTitle}>
           <Text style={styles.texto}>Minha Geladeira</Text>
