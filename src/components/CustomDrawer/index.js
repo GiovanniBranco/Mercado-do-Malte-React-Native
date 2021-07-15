@@ -1,8 +1,11 @@
-import React, {useState} from 'react';
-import {View} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, Text} from 'react-native';
 import {Button} from 'react-native-paper';
 
+import obterUser from '../../repository/clienteRepository';
+
 import storage from '../../utils/storage';
+import formata from '../../utils/formata';
 
 import styles from './styles';
 import geral from '../../styles/geral';
@@ -10,12 +13,23 @@ import cores from '../../styles/cores';
 
 const CustomDrawer = ({navigation}) => {
   const [token, setToken] = useState('');
+  const [username, setUserName] = useState('');
 
   const isLogado = async () => {
-    let teste = await storage.getToken();
-    setToken(teste);
+    let token = await storage.getToken();
+    setToken(token);
+    await getUser();
   };
 
+  const getUser = async () => {
+    const username = await storage.getCliente();
+    const user = await obterUser(username);
+    if (user != null) {
+      setUserName(user);
+    } else {
+      setUserName(null);
+    }
+  };
   isLogado();
 
   return (
@@ -39,6 +53,18 @@ const CustomDrawer = ({navigation}) => {
           icon="file-document-edit">
           Cadastro
         </Button>
+      )}
+
+      {token === null ? null : (
+        <>
+          <View style={styles.containerUser}>
+            <Text style={styles.username}>
+              {formata.formataPalavra(username.username)}
+            </Text>
+            <Text style={styles.email}>{username.email}</Text>
+          </View>
+          <View style={styles.divisor} />
+        </>
       )}
 
       {token != null ? (

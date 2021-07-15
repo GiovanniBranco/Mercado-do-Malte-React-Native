@@ -44,14 +44,16 @@ function Home({navigation}) {
     fecharApp,
   );
 
+  
+
   useEffect(() => {
     carregaProduto();
     getProdutos();
     return () => backHandler.remove();
   }, []);
 
-  const load = () =>{
-    return <ActivityIndicator size="large" color={cores.green400}/>
+  const load = () => {
+    return <ActivityIndicator size="large" color={cores.green400} />;
   };
 
   return (
@@ -62,10 +64,7 @@ function Home({navigation}) {
         keyExtractor={item => item.nome}
         ListFooterComponent={loading ? load : null}
         renderItem={({item}) => (
-          <Card
-            navigation={navigation}
-            produto={item}
-          />
+          <Card navigation={navigation} produto={item} />
         )}></FlatList>
     </>
   );
