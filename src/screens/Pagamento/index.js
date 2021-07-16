@@ -1,15 +1,21 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet, Alert} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, Text, Alert} from 'react-native';
 import {TextInput, Button, IconButton} from 'react-native-paper';
-
 import SelectDropdown from 'react-native-select-dropdown';
 
+import realmRepository from '../../repository/realmRepository';
+
+import formata from '../../utils/formata';
+
 import Header from '../../components/Header';
+
 import geral from '../../styles/geral';
 import cores from '../../styles/cores';
 import styles from './styles';
 
 const Pagamento = ({navigation}) => {
+  const [valor, setValor] = useState(0);
+
   const meses = [
     '01',
     '02',
@@ -38,11 +44,30 @@ const Pagamento = ({navigation}) => {
     '31',
     '32',
   ];
-  const parcelas = ['1x de R$ 15', '2x de R$ 7,50'];
+
+  useEffect(async () => {
+    const produtosRealm = await realmRepository.getProdutoRealm();
+    somarQuantidade();
+  }, [parcelas]);
+
+  const somarQuantidade = async () => {
+    let somar = 0;
+    const produtosRealm = await realmRepository.getProdutoRealm();
+    produtosRealm.map(produto => {
+      somar += produto.preco * produto.quantidade;
+    });
+    setValor(somar);
+  };
+
+  const parcelas = [
+    '1x de ' + formata.formataReal(valor) + ' sem juros',
+    '2x de ' + formata.formataReal(valor / 2) + ' sem juros',
+    '3x de ' + formata.formataReal(valor / 3) + ' sem juros',
+  ];
 
   return (
     <>
-      <Header />
+      <Header navigation={navigation} />
 
       <View style={styles.container}>
         <View style={styles.containerTitulo}>
@@ -75,6 +100,7 @@ const Pagamento = ({navigation}) => {
             <View style={styles.containerValidade}>
               <View>
                 <Text>Validade*</Text>
+
                 <View style={styles.containerValidade}>
                   <SelectDropdown
                     data={meses}
@@ -94,6 +120,7 @@ const Pagamento = ({navigation}) => {
               </View>
             </View>
           </View>
+
           <View style={styles.containerCvv}>
             <TextInput mode="outlined" label="CVV*" style={styles.inputCvv} />
             <IconButton
@@ -103,13 +130,15 @@ const Pagamento = ({navigation}) => {
               style={styles.iconeCvv}
             />
           </View>
+
           <View style={styles.containerParcelas}>
             <View>
               <Text>Número de parcelas*</Text>
             </View>
+
             <SelectDropdown
               data={parcelas}
-              defaultValueByIndex={0}
+              defaultValue={parcelas[0]}
               onSelect={(selectedItem, index) => {}}
               buttonStyle={styles.inputParcelas}
               buttonTextStyle={styles.labelValidade}
@@ -117,10 +146,12 @@ const Pagamento = ({navigation}) => {
           </View>
 
           <View style={styles.divisor} />
+
           <View style={styles.containerTotal}>
             <Text style={styles.total}>Total</Text>
-            <Text style={styles.valor}>R$ 15,00</Text>
+            <Text style={styles.valor}>{formata.formataReal(valor)}</Text>
           </View>
+
           <View style={styles.containerBotoes}>
             <Button
               style={styles.fechar}
@@ -132,6 +163,7 @@ const Pagamento = ({navigation}) => {
               }>
               Fechar Pedido
             </Button>
+
             <Button
               style={styles.voltar}
               labelStyle={styles.label}

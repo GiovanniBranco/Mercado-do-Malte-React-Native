@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/Entypo';
 
 import geral from '../../styles/geral';
 import formata from '../../utils/formata';
@@ -21,13 +22,9 @@ function Card(props) {
         />
       </View>
       <View style={styles.containerInfos}>
-        <Text style={geral.titulo}>
-          {formata.formataPalavra(nome)}
-        </Text>
+        <Text style={geral.titulo}>{formata.formataPalavra(nome)}</Text>
         <Text style={geral.numero}>{formata.formataReal(preco)}</Text>
-        <Text style={geral.subTitulo}>
-          {formata.formataPalavra(categoria)}
-        </Text>
+        <Text style={geral.subTitulo}>{formata.formataPalavra(categoria)}</Text>
         <TouchableOpacity
           style={styles.btnDetalhes}
           onPress={() =>
@@ -40,6 +37,13 @@ function Card(props) {
           }>
           <Text style={geral.btnText}>Detalhes</Text>
         </TouchableOpacity>
+
+        <View style={styles.viewAvaliacao}>
+          <Icon name="star" style={styles.starAvaliacao} />
+          <Text style={styles.avaliacao}>
+            {(3 + 2 * Math.random()).toFixed(1)}
+          </Text>
+        </View>
       </View>
     </View>
   );

@@ -10,6 +10,7 @@ import Login from '../screens/Login/';
 import Cadastro from '../screens/Cadastro/';
 import Geladeira from '../screens/Geladeira';
 import Pagamento from '../screens/Pagamento';
+import Redefinir from '../screens/Redefinir';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,8 @@ const StackRoute = () => {
       <Stack.Screen name="Detalhes" component={Detalhes} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Cadastro" component={Cadastro} />
+      <Stack.Screen name="Pagamento" component={Pagamento} />
+      <Stack.Screen name="Redefinir" component={Redefinir} />
     </Stack.Navigator>
   );
 };

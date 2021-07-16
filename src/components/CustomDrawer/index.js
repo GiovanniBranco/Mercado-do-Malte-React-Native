@@ -9,6 +9,8 @@ import formata from '../../utils/formata';
 
 import getProdutos from '../../repository/produtoRepository';
 
+import storage from '../../utils/storage';
+
 import styles from './styles';
 import geral from '../../styles/geral';
 import cores from '../../styles/cores';
@@ -18,7 +20,14 @@ const CustomDrawer = ({navigation}) => {
 
   const [produtos, setProdutos] = useState([]);
   const [tokenContext, setTokenContext] = useContext(TokenContext);
-  
+
+  const setUsuario = async () => {
+    const username = await storage.getCliente();
+    setUserName(username);
+  };
+
+  setUsuario();
+
   useEffect(async () => {
     setProdutos(await getProdutos());
   }, []);
@@ -52,7 +61,7 @@ const CustomDrawer = ({navigation}) => {
             <Text style={styles.username}>
               {formata.formataPalavra(username)}
             </Text>
-            <Text style={styles.email}>giovannipbranco1@gmail.com</Text>
+            <Text style={styles.email}>{username}@gmail.com</Text>
           </View>
           <View style={styles.divisor} />
         </>
@@ -96,8 +105,7 @@ const CustomDrawer = ({navigation}) => {
         mode={'text'}
         color={cores.green400}
         icon="glass-mug-variant"
-        onPress={() => navigation.navigate('HomeNacionais')}
-      >
+        onPress={() => navigation.navigate('HomeNacionais')}>
         Nacionais
       </Button>
       <Button
@@ -116,6 +124,7 @@ const CustomDrawer = ({navigation}) => {
           color={cores.green400}
           onPress={() => {
             setTokenContext(null);
+            setUserName('');
             navigation.navigate('Home');
           }}
           icon="door-open">

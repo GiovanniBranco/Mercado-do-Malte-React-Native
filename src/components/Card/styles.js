@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
   img: {
     width: '120%',
-    height: '100%'
+    height: '100%',
   },
   containerInfos: {
     width: '65%',
@@ -46,6 +46,19 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     width: '85%',
     alignItems: 'center',
+  },
+  starAvaliacao: {
+    color: '#F9AA00',
+    fontSize: 20,
+    marginRight: 5,
+  },
+  viewAvaliacao: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  avaliacao: {
+    fontSize: 18,
   },
 });
 

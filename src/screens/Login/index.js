@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, ActivityIndicator, Alert} from 'react-native';
 import {TextInput, Button, IconButton} from 'react-native-paper';
 
 import storage from '../../utils/storage';
@@ -9,28 +9,34 @@ import TokenContext from '../../context/TokenContext';
 
 import styles from './styles';
 import cores from '../../styles/cores';
+import geral from '../../styles/geral';
 
 const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [senha, setSenha] = useState('');
   const [tokenContext, setTokenContext] = useContext(TokenContext);
 
+  const [loading, setLoading] = useState(false);
+
   const efetuarLogin = async () => {
     if (!username || !senha) {
       alert('Favor informar seu usuário e senha');
       return;
     }
-
+    
+    setLoading(true);
     await apiUsuario
       .logar(username, senha)
       .then(resposta => {
         const token = resposta.data.Authorization;
         salvarUsuario();
         setTokenContext(token);
+        setLoading(false);
         navigation.navigate('Home');
       })
       .catch(erro => {
-        alert('Não foi possível efetual o login');
+        setLoading(false);
+        Alert.alert('Erro', 'Não foi possível efetual o login');
         console.log(erro);
       });
   };
@@ -79,9 +85,13 @@ const Login = ({navigation}) => {
         </View>
 
         <View style={styles.containerLink}>
-          <Text dataDetectorType="link" style={styles.link}>
+          <Button
+            mode="text"
+            color={cores.greenlight}
+            labelStyle={styles.link}
+            onPress={() => navigation.navigate('Redefinir')}>
             Esqueci minha senha
-          </Text>
+          </Button>
         </View>
 
         <View style={styles.containerBotoes}>
@@ -92,6 +102,18 @@ const Login = ({navigation}) => {
             style={styles.botaoEntrar}>
             Entrar
           </Button>
+
+          {loading ? (
+            <View style={styles.containerLoading}>
+              <ActivityIndicator
+                size="large"
+                color={cores.green400}
+                animating={loading}
+              />
+              <Text style={styles.textLoading}>Entrando...</Text>
+            </View>
+          ) : null}
+
           <Button
             mode="outlined"
             color={cores.green400}

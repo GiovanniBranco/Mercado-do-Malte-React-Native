@@ -1,5 +1,12 @@
 import React, {useState, useContext} from 'react';
-import {View, Text, Image, TouchableOpacity, TextInput} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  TextInput,
+  Alert,
+} from 'react-native';
 
 import TokenContext from '../../context/TokenContext';
 import realmRepository from '../../repository/realmRepository';
@@ -75,30 +82,36 @@ function CardDetalhes(props) {
       <View style={styles.viewBotao}>
         <TouchableOpacity
           onPress={() => {
-            if (!token) {
-              alert(
-                'Você precisa estar logado para adicionar produtos ao carrinho!',
-              );
+            if (token != null) {
               realmRepository.saveProduto(Produto);
-              props.navigation.navigate('Login');
-              return;
+              props.navigation.navigate('Home');
             }
+            Alert.alert(
+              'Ops...',
+              'Você precisa estar logado para adicionar produtos ao carrinho!',
+            );
             realmRepository.saveProduto(Produto);
-            props.navigation.navigate('Home');
+            props.navigation.navigate('Login');
+            return;
           }}
           style={styles.botao}>
           <Text style={geral.btnText}>Adicionar a geladeira</Text>
         </TouchableOpacity>
+
         <TouchableOpacity
           onPress={() => {
-            if (!token) {
-              alert('Você precisa estar logado para comprar agora!');
+            console.log(token);
+            if (token != null) {
               realmRepository.saveProduto(Produto);
-              props.navigation.navigate('Login');
-              return;
+              props.navigation.navigate('Geladeira');
             }
+            Alert.alert(
+              'Ops...',
+              'Você precisa estar logado para comprar agora!',
+            );
             realmRepository.saveProduto(Produto);
-            props.navigation.navigate('Geladeira');
+            props.navigation.navigate('Login');
+            return;
           }}
           style={styles.botao}>
           <Text style={geral.btnText}>Comprar agora</Text>

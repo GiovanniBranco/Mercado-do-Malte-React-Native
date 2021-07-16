@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 import cores from '../../styles/cores';
+import fontes from '../../styles/fontes';
 
 const styles = StyleSheet.create({
   container: {
@@ -31,12 +32,11 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
   },
   link: {
-    fontSize: 16,
+    fontSize: 12,
     color: cores.greenlight,
   },
   containerBotoes: {
     alignSelf: 'center',
-    marginTop: '5%',
     width: '80%',
     justifyContent: 'space-between',
   },
@@ -59,6 +59,14 @@ const styles = StyleSheet.create({
     marginBottom: '2%',
     alignSelf: 'center',
     fontSize: 14,
+  },
+  containerLoading: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  textLoading: {
+    color: cores.green400,
+    fontSize: fontes.large,
   },
 });
 
