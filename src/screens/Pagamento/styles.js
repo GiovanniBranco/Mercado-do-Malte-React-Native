@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
     backgroundColor: cores.background,
     padding: 10,
   },
-  containerTitulo: {},
   divisor: {
     height: 2,
     backgroundColor: '#ddd',
