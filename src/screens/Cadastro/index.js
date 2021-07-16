@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, Alert, ActivityIndicator} from 'react-native';
 import {TextInput, Button, IconButton} from 'react-native-paper';
 
 import {DatePicker} from 'react-native-woodpicker';
@@ -31,6 +31,8 @@ const Cadastro = ({navigation}) => {
   const [complemento, setComplemento] = useState('');
   const [numero, setNumero] = useState('');
 
+  const [loading, setLoading] = useState(false);
+
   async function ObterEndereco(cep) {
     cep = cep.replace(/[^0-9]/, '');
 
@@ -53,6 +55,7 @@ const Cadastro = ({navigation}) => {
     dataNascimento ? format(dataNascimento, 'dd/MM/yyyy') : 'No value Selected';
 
   const handleSubmit = async () => {
+    setLoading(true);
     const enderecos = new Endereco({
       cep: cep,
       numero: numero,
@@ -83,13 +86,15 @@ const Cadastro = ({navigation}) => {
         .post('/cliente', cliente)
         .then(response => {
           console.log(response);
-          alert('Cliente cadastrado com sucesso');
+          setLoading(false);
+          Alert.alert('Sucesso', 'Cliente cadastrado com sucesso');
           navigation.navigate('Login');
         })
 
         .catch(error => {
           console.log(error);
-          alert('Não foi possível realizar o cadastro :(');
+          setLoading(false);
+          Alert.alert('Erro', 'Não foi possível realizar o cadastro :(');
         });
     });
   };
@@ -243,17 +248,29 @@ const Cadastro = ({navigation}) => {
               color={cores.green400}
               style={styles.botaoCadastrar}
               labelStyle={styles.labelCadastrar}
-              onPress={() => handleSubmit()}>
+              onPress={() => {
+                handleSubmit();
+              }}>
               Cadastrar
             </Button>
+
+            {loading ? (
+              <View style={styles.containerLoading}>
+                <ActivityIndicator
+                  size="large"
+                  color={cores.green400}
+                  animating={loading}
+                />
+                <Text style={styles.textLoading}>Enviando...</Text>
+              </View>
+            ) : null}
 
             <Button
               mode="outlined"
               color={cores.green400}
               style={styles.botaoVoltar}
               labelStyle={styles.labelCadastrar}
-              //   onPress={() => navigation.navigate('Home')}
-            >
+              onPress={() => navigation.navigate('Home')}>
               Voltar
             </Button>
           </View>

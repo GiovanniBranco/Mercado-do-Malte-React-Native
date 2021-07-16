@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 import cores from '../../styles/cores';
+import fontes from '../../styles/fontes';
 
 const styles = StyleSheet.create({
   container: {
@@ -118,6 +119,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#DDD',
     padding: 3,
+  },
+  containerLoading: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  textLoading: {
+    color: cores.green400,
+    fontSize: fontes.large,
   },
 });
 

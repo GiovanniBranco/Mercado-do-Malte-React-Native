@@ -75,7 +75,7 @@ function CardDetalhes(props) {
       <View style={styles.viewBotao}>
         <TouchableOpacity
           onPress={() => {
-            if (!token) {
+            if (token === null) {
               alert(
                 'Você precisa estar logado para adicionar produtos ao carrinho!',
               );
@@ -91,14 +91,16 @@ function CardDetalhes(props) {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            if (!token) {
+            console.log(token);
+            if (token == null) {
               alert('Você precisa estar logado para comprar agora!');
               realmRepository.saveProduto(Produto);
               props.navigation.navigate('Login');
               return;
+            } else {
+              realmRepository.saveProduto(Produto);
+              props.navigation.navigate('Geladeira');
             }
-            realmRepository.saveProduto(Produto);
-            props.navigation.navigate('Geladeira');
           }}
           style={styles.botao}>
           <Text style={geral.btnText}>Comprar agora</Text>
