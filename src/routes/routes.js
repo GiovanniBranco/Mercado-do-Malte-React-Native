@@ -5,11 +5,11 @@ import TokenContext from '../context/TokenContext';
 import Drawer from '../navigators/drawer';
 
 const Routes = () => {
-  const token = useState('');
+  const tokenValue = useState('');
 
   return (
     <NavigationContainer>
-      <TokenContext.Provider value={token}>
+      <TokenContext.Provider value={tokenValue}>
         <Drawer />
       </TokenContext.Provider>
     </NavigationContainer>

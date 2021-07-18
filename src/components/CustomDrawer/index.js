@@ -124,6 +124,7 @@ const CustomDrawer = ({navigation}) => {
           color={cores.green400}
           onPress={() => {
             setTokenContext(null);
+            storage.deleteToken();
             setUserName('');
             navigation.navigate('Home');
           }}

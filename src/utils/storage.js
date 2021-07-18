@@ -43,7 +43,6 @@ const getCliente = async () => {
 const deleteToken = async () => {
   try {
     await AsyncStorage.removeItem('@storage_Token');
-    console.log('Token deletado');
   } catch (error) {
     console.log(error.message);
   }

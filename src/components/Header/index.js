@@ -1,17 +1,26 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {IconButton} from 'react-native-paper';
 import Geladeira from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import TokenContext from '../../context/TokenContext';
+import storage from '../../utils/storage';
 
 import cores from '../../styles/cores';
 import geral from '../../styles/geral';
 import styles from './style';
 
 const Header = props => {
-  const [tokenContext] = useContext(TokenContext);
+  const [tokenContext, setTokenContext] = useContext(TokenContext);
 
+  const getToken = async () => {
+    const token = await storage.getToken();
+    setTokenContext(token);
+  };
+  useEffect(() => {
+    getToken();
+  }, []);
+  
   return tokenContext === null ? (
     <View style={styles.container}>
       <IconButton

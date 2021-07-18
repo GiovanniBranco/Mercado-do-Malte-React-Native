@@ -36,8 +36,18 @@ const deleteProdutoRealm = async nome => {
   });
 };
 
+const deleteRealm = async () => {
+  const realm = await getRealm();
+
+  realm.write(() => {
+    const realmProdutos = realm.objects('Produto');
+    realm.delete(realmProdutos);
+  });
+};
+
 export default {
   saveProduto,
   getProdutoRealm,
   deleteProdutoRealm,
+  deleteRealm,
 };

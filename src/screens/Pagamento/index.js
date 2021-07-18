@@ -169,6 +169,7 @@ const Pagamento = ({navigation}) => {
               color={cores.green500}
               onPress={() =>{
                 enviarPedido();
+                realmRepository.deleteRealm();
                 Alert.alert('Nosso agradecimento!', 'Grupo 01, só BRABO!');}
               }>
               Fechar Pedido
