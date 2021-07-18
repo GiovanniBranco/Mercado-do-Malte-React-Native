@@ -43,7 +43,7 @@ function CardDetalhes(props) {
     if (!verificaInteiro) return;
 
     const removeZeroEsquerda = qtd.replace(/^(0)(.+)/, '$2');
-    setQuantidade(removeZeroEsquerda);
+    setQuantidade(Number(removeZeroEsquerda));
   };
 
   return (

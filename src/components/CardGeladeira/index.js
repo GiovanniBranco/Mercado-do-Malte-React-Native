@@ -21,7 +21,7 @@ function CardGeladeira(props) {
     if (!verificaInteiro) return;
 
     const removeZeroEsquerda = qtd.replace(/^(0)(.+)/, '$2');
-    setQuantidade(removeZeroEsquerda);
+    setQuantidadeProduto(removeZeroEsquerda);
   };
 
   const somarQuantidade = novaQuantidade => {
