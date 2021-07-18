@@ -1,15 +1,12 @@
 import React, {useState, useEffect, useContext} from 'react';
-
 import {View, Text} from 'react-native';
 import {Button} from 'react-native-paper';
 
-import TokenContext from '../../context/TokenContext';
-
-import formata from '../../utils/formata';
-
 import produtoRepository from '../../repository/produtoRepository';
-
+import realmRepository from '../../repository/realmRepository';
+import TokenContext from '../../context/TokenContext';
 import storage from '../../utils/storage';
+import formata from '../../utils/formata';
 
 import styles from './styles';
 import geral from '../../styles/geral';
@@ -126,6 +123,7 @@ const CustomDrawer = ({navigation}) => {
             setTokenContext(null);
             storage.deleteToken();
             setUserName('');
+            realmRepository.deleteRealm();
             navigation.navigate('Home');
           }}
           icon="door-open">
