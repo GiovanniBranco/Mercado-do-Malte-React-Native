@@ -171,7 +171,7 @@ const Pagamento = ({navigation}) => {
                 await enviarPedido();
                 realmRepository.deleteRealm();
                 Alert.alert('Nosso agradecimento!', 'Grupo 01, só BRABO!');
-                navigation.navigate("Home");
+                navigation.navigate('Home');
               }}>
               Fechar Pedido
             </Button>

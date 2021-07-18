@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -8,8 +8,9 @@ import {
   Alert,
 } from 'react-native';
 
-import TokenContext from '../../context/TokenContext';
 import realmRepository from '../../repository/realmRepository';
+import storage from '../../utils/storage';
+import API from '../../services/api';
 
 import formata from '../../utils/formata';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -17,9 +18,18 @@ import geral from '../../styles/geral';
 import styles from './styles';
 
 function CardDetalhes(props) {
-  const token = useContext(TokenContext);
+  const [token, setToken] = useState('');
   const [quantidade, setQuantidade] = useState(1);
   const {nome, descricao, categoria, preco} = props;
+
+  const getToken = async () => {
+    const token = await storage.getToken();
+    setToken(token);
+  };
+
+  useEffect(() => {
+    getToken();
+  }, []);
 
   const Produto = {
     nome: nome,

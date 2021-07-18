@@ -1,4 +1,5 @@
 import API from '../services/api';
+import storage from '../utils/storage';
 
 const getProdutos = async () => {
   try {
