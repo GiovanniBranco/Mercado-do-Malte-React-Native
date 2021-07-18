@@ -7,7 +7,7 @@ import Header from '../../components/Header';
 
 import realmRepository from '../../repository/realmRepository';
 import storage from '../../utils/storage';
-import produtoRepository from "../../repository/produtoRepository";
+import produtoRepository from '../../repository/produtoRepository';
 
 import formata from '../../utils/formata';
 import geral from '../../styles/geral';
@@ -53,9 +53,9 @@ const Pagamento = ({navigation}) => {
     const produtosRealm = await realmRepository.getProdutoRealm();
     const produtosPedido = produtosRealm.map(p => ({
       nome: p.nome,
-      quantidade: p.quantidade
+      quantidade: p.quantidade,
     }));
-    const cliente = await storage.getCliente()
+    const cliente = await storage.getCliente();
     produtoRepository.finalizarPedido(produtosPedido, cliente);
   };
 
@@ -167,11 +167,12 @@ const Pagamento = ({navigation}) => {
               labelStyle={geral.btnText}
               mode="contained"
               color={cores.green500}
-              onPress={() =>{
-                enviarPedido();
+              onPress={async () => {
+                await enviarPedido();
                 realmRepository.deleteRealm();
-                Alert.alert('Nosso agradecimento!', 'Grupo 01, só BRABO!');}
-              }>
+                Alert.alert('Nosso agradecimento!', 'Grupo 01, só BRABO!');
+                navigation.navigate("Home");
+              }}>
               Fechar Pedido
             </Button>
 

@@ -173,7 +173,6 @@ const Cadastro = ({navigation}) => {
               <DatePicker
                 value={dataNascimento}
                 onDateChange={async date => {
-                  console.log(date);
                   await setDataNascimento(date);
                 }}
                 text={handleText()}
