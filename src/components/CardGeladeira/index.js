@@ -65,7 +65,7 @@ function CardGeladeira(props) {
         />
       </View>
       <View style={styles.quantidadeNome}>
-        <Text style={styles.textoNomePreco}>{nome}</Text>
+        <Text style={styles.textoNomePreco}>{formata.formataPalavra(nome)}</Text>
 
         <View style={styles.viewQuantidade}>
           <Icon

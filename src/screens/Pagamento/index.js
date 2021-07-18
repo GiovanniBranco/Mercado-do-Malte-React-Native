@@ -1,21 +1,21 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {View, Text, Alert} from 'react-native';
 import {TextInput, Button, IconButton} from 'react-native-paper';
 import SelectDropdown from 'react-native-select-dropdown';
 
-import realmRepository from '../../repository/realmRepository';
-
-import formata from '../../utils/formata';
-
 import Header from '../../components/Header';
 
+import realmRepository from '../../repository/realmRepository';
+import storage from '../../utils/storage';
+import produtoRepository from "../../repository/produtoRepository";
+
+import formata from '../../utils/formata';
 import geral from '../../styles/geral';
 import cores from '../../styles/cores';
 import styles from './styles';
 
 const Pagamento = ({navigation}) => {
   const [valor, setValor] = useState(0);
-
   const meses = [
     '01',
     '02',
@@ -46,9 +46,18 @@ const Pagamento = ({navigation}) => {
   ];
 
   useEffect(async () => {
-    const produtosRealm = await realmRepository.getProdutoRealm();
     somarQuantidade();
   }, [parcelas]);
+
+  const enviarPedido = async () => {
+    const produtosRealm = await realmRepository.getProdutoRealm();
+    const produtosPedido = produtosRealm.map(p => ({
+      nome: p.nome,
+      quantidade: p.quantidade
+    }));
+    const cliente = await storage.getCliente()
+    produtoRepository.finalizarPedido(produtosPedido, cliente);
+  };
 
   const somarQuantidade = async () => {
     let somar = 0;
@@ -158,8 +167,9 @@ const Pagamento = ({navigation}) => {
               labelStyle={geral.btnText}
               mode="contained"
               color={cores.green500}
-              onPress={() =>
-                Alert.alert('Nosso agradecimento!', 'Grupo 01, só BRABO!')
+              onPress={() =>{
+                enviarPedido();
+                Alert.alert('Nosso agradecimento!', 'Grupo 01, só BRABO!');}
               }>
               Fechar Pedido
             </Button>

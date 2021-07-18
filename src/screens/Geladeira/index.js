@@ -61,7 +61,7 @@ function Geladeira({navigation}) {
               onPress={() => {
                 navigation.navigate('Pagamento');
               }}>
-              <Text style={styles.textoInferiorFooter}>Pagar Pedidos</Text>
+              <Text style={styles.textoInferiorFooter}>Pagar Pedido</Text>
             </TouchableOpacity>
           </View>
         </View>

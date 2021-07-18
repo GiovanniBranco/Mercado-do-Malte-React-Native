@@ -11,24 +11,23 @@ const styles = StyleSheet.create({
     height: metricas.navBarHeight,
     backgroundColor: cores.dark,
     alignItems: 'center',
-    
   },
   busca: {
     alignSelf: 'center',
-    width: "90%",
-    marginTop: "3%",
-    marginBottom: "3%",
+    width: '90%',
+    marginTop: '3%',
+    marginBottom: '3%',
   },
   login: {
     color: cores.green400,
     fontSize: fontes.regular,
-    fontFamily: "Lexend-Bold",
-    marginRight: metricas.doubleBaseMargin
+    fontFamily: 'Lexend-Bold',
+    marginRight: metricas.doubleBaseMargin,
   },
   geladeira: {
     color: cores.green400,
-    marginRight: metricas.doubleBaseMargin
-  }
+    marginRight: metricas.doubleBaseMargin,
+  },
 });
 
 export default styles;

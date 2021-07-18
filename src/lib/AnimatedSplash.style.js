@@ -1,17 +1,17 @@
-import { StyleSheet, Dimensions } from "react-native";
+import {StyleSheet, Dimensions} from 'react-native';
 
-const { width, height } = Dimensions.get("screen");
+const {width, height} = Dimensions.get('screen');
 
 export const _solidBackground = (logoOpacity, backgroundColor) => [
   logoOpacity,
   StyleSheet.absoluteFill,
-  { backgroundColor: backgroundColor || null },
+  {backgroundColor: backgroundColor || null},
 ];
 
 export const _dynamicImageBackground = (
   imageScale,
   logoOpacity,
-  backgroundColor
+  backgroundColor,
 ) => [
   imageScale,
   logoOpacity,
@@ -20,8 +20,8 @@ export const _dynamicImageBackground = (
     width,
     height,
     top: 0,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     tintColor: backgroundColor || null,
   },
 ];
@@ -30,7 +30,7 @@ export const _dynamicLogoStyle = (
   logoScale,
   logoOpacity,
   logoWidth,
-  logoHeight
+  logoHeight,
 ) => [
   logoScale,
   logoOpacity,
@@ -46,14 +46,14 @@ export default {
   },
   containerGlue: {
     flex: 1,
-    alignContent: "center",
-    justifyContent: "center",
+    alignContent: 'center',
+    justifyContent: 'center',
   },
   flex: {
     flex: 1,
   },
   logoStyle: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 };

@@ -5,7 +5,7 @@ import {Searchbar} from 'react-native-paper';
 import Header from '../../components/Header';
 import Card from '../../components/Card';
 
-import getProdutos from '../../repository/produtoRepository';
+import produtoRepository from '../../repository/produtoRepository';
 
 import cores from '../../styles/cores';
 import styles from '../../components/Header/style';
@@ -30,7 +30,7 @@ function HomeArtesanais({navigation}) {
 
   const carregaProduto = async () => {
     setLoading(true);
-    const data = await getProdutos();
+    const data = await produtoRepository.getProdutos();
     setProdutos(data.filter(p => p.categoria === 'artesanais'));
     setProdutosFiltrados(data.filter(p => p.categoria === 'artesanais'));
     setLoading(false);
@@ -60,7 +60,7 @@ function HomeArtesanais({navigation}) {
 
   useEffect(() => {
     carregaProduto();
-    getProdutos();
+    produtoRepository.getProdutos();
     return () => backHandler.remove();
   }, []);
 

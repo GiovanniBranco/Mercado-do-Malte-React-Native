@@ -7,7 +7,7 @@ import TokenContext from '../../context/TokenContext';
 
 import formata from '../../utils/formata';
 
-import getProdutos from '../../repository/produtoRepository';
+import produtoRepository from '../../repository/produtoRepository';
 
 import storage from '../../utils/storage';
 
@@ -29,7 +29,7 @@ const CustomDrawer = ({navigation}) => {
   setUsuario();
 
   useEffect(async () => {
-    setProdutos(await getProdutos());
+    setProdutos(await produtoRepository.getProdutos());
   }, []);
 
   return (

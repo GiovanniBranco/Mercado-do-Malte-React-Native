@@ -10,9 +10,8 @@ import geral from '../../styles/geral';
 import styles from './style';
 
 const Header = props => {
-
   const [tokenContext] = useContext(TokenContext);
-  
+
   return tokenContext === null ? (
     <View style={styles.container}>
       <IconButton

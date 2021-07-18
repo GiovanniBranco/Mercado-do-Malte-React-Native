@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
   labelBotao: {
     fontSize: 18,
-    fontFamily: "Lexend-Regular",
+    fontFamily: 'Lexend-Regular',
     letterSpacing: 2,
     fontWeight: '700',
   },

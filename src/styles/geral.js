@@ -62,12 +62,12 @@ const geral = {
     fontFamily: 'Inter-Bold',
     alignSelf: 'center',
   },
-  splash:{
+  splash: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#262626",
-  }
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#262626',
+  },
 };
 
 export default geral;

@@ -9,7 +9,6 @@ import TokenContext from '../../context/TokenContext';
 
 import styles from './styles';
 import cores from '../../styles/cores';
-import geral from '../../styles/geral';
 
 const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
@@ -23,7 +22,7 @@ const Login = ({navigation}) => {
       alert('Favor informar seu usuário e senha');
       return;
     }
-    
+
     setLoading(true);
     await apiUsuario
       .logar(username, senha)
@@ -31,6 +30,7 @@ const Login = ({navigation}) => {
         const token = resposta.data.Authorization;
         salvarUsuario();
         setTokenContext(token);
+        storage.storeToken(token);
         setLoading(false);
         navigation.navigate('Home');
       })

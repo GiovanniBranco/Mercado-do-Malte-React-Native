@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   containerInfos: {
     height: '70%',
     alignItems: 'center',
-    padding: "2%",
+    padding: '2%',
     justifyContent: 'space-evenly',
   },
   viewQuantidade: {

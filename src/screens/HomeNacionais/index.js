@@ -5,7 +5,7 @@ import {Searchbar} from 'react-native-paper';
 import Header from '../../components/Header';
 import Card from '../../components/Card';
 
-import getProdutos from '../../repository/produtoRepository';
+import produtoRepository from '../../repository/produtoRepository';
 
 import cores from '../../styles/cores';
 import styles from '../../components/Header/style';
@@ -30,7 +30,7 @@ function HomeNacionais({navigation}) {
 
   const carregaProduto = async () => {
     setLoading(true);
-    const data = await getProdutos();
+    const data = await produtoRepository.getProdutos();
     setProdutos(data.filter(p => p.categoria === 'nacionais'));
     setProdutosFiltrados(data.filter(p => p.categoria === 'nacionais'));
     setLoading(false);
@@ -60,8 +60,8 @@ function HomeNacionais({navigation}) {
 
   useEffect(() => {
     carregaProduto();
-    getProdutos();
-    
+    produtoRepository.getProdutos();
+
     return () => backHandler.remove();
   }, []);
 
