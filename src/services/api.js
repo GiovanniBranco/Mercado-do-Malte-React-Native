@@ -5,18 +5,12 @@ const API = axios.create({
   baseURL: 'https://ecommerce-serratec.herokuapp.com/',
 });
 
-function defineHeaderAuthorization() {
-  async function recuperarToken() {
-    const token = await storage.getToken();
-    if (token != null) {
-      API.defaults.headers['Authorization'] = token;
-    } else {
-      return null;
-    }
+API.interceptors.request.use(async config => {
+  const token = await storage.getToken();
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
   }
-  recuperarToken();
-}
-
-defineHeaderAuthorization();
+  return config;
+});
 
 export default API;

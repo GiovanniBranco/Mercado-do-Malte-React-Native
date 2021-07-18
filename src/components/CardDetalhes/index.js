@@ -8,12 +8,12 @@ import {
   Alert,
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/AntDesign';
+
 import realmRepository from '../../repository/realmRepository';
 import storage from '../../utils/storage';
-import API from '../../services/api';
-
 import formata from '../../utils/formata';
-import Icon from 'react-native-vector-icons/AntDesign';
+
 import geral from '../../styles/geral';
 import styles from './styles';
 
